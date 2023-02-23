@@ -1,0 +1,23 @@
+{
+  "name": "@wp-blocks/scripts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Utility build scripts",
+  "license": "GPL-2.0-or-later",
+  "author": "John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)",
+  "homepage": "https://github.com/wp-blocks/wp-blocks#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wp-blocks/wp-blocks.git",
+    "directory": "packages/scripts"
+  },
+  "bugs": "https://github.com/wp-blocks/wp-blocks/issues",
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "16.18.12"
+  }
+}

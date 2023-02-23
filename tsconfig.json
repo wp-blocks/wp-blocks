@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig.base",
+	"files": [],
+	"references": [{ "path": "./packages/create-block" },
+	 { "path": "./packages/create-block-ts-template" }],
+	"exclude": ["jest.config.cjs", "./lint-staged.config.js"]
+}

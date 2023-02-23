@@ -1,0 +1,37 @@
+{
+	"$schema": "https://turborepo.org/schema.json",
+	"pipeline": {
+		"clean": {
+			"cache": false
+		},
+		"clean:all": {
+			"cache": false
+		},
+		"build:compile": {
+			"dependsOn": ["^build:compile"],
+			"inputs": ["src/**/*.{ts,tsx}", "tsconfig.json", "tsconfig.dev.json"],
+			"outputs": ["build/**/*"]
+		},
+		"build:types": {
+			"dependsOn": ["^build:types", "build:compile"],
+			"inputs": ["build/**/*.d.ts", "api-extractor.json"],
+			"outputs": ["etc/**/*", "dist/index.d.ts"]
+		},
+		"build:esm": {
+			"dependsOn": ["build:compile"],
+			"inputs": ["build/**/*.js"],
+			"outputs": ["dist/**/*.js"]
+		},
+		"build": {
+			"dependsOn": ["^build", "build:esm", "build:types"],
+			"outputs": ["dist/**"]
+		}
+	},
+	"globalDependencies": [
+		".eslintrc.js",
+		".prettierrc",
+		"api-extractor.json",
+		"tsconfig.json",
+		"scripts/**/*"
+	]
+}

@@ -1,0 +1,16 @@
+{
+	"extends": "./tsconfig.base.json",
+	"compilerOptions": {
+		"types": ["@types/node"],
+		"noEmit": true,
+		"allowJs": true
+	},
+	"include": [
+		"scripts/**/*.ts",
+		".eslintrc.cjs",
+		".prettierrc.cjs",
+		"jest.config.base.cjs",
+		"jest.config.cjs",
+		"lint-staged.config.cjs"
+	]
+}
