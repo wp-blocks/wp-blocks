@@ -52,6 +52,7 @@
 		"@wordpress/prettier-config": "^2.10.0",
 		"@wordpress/scripts": "^25.4.0",
 		"@wordpress/stylelint-config": "^21.10.0",
+		"@wp-blocks/tsconfig": "workspace:^0.1.0",
 		"babel-jest": "^29.4.3",
 		"eslint-import-resolver-typescript": "^3.5.3",
 		"eslint-plugin-import": "^2.27.5",
