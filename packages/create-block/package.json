@@ -28,7 +28,8 @@
 	"files": [
 		"lib"
 	],
-	"main": "index.js",
+	"type": "module",
+	"module": "build/index.js",
 	"bin": {
 		"wp-create-block": "./index.js"
 	},
@@ -49,5 +50,8 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"@wordpress/blocks": "^12.4.0"
 	}
 }
