@@ -1,0 +1,36 @@
+{
+	"name": "@wp-blocks/tsconfig",
+	"version": "0.1.0",
+	"description": "A shared TypeScript configuration for wp-block projects",
+	"contributors": [
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"tsconfig",
+		"typescript",
+		"ts",
+		"config",
+		"configuration"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "packages/tsconfig"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6.14.4"
+	},
+	"main": "tsconfig.json",
+	"files": [
+		"tsconfig.json"
+	],
+	"publishConfig": {
+		"access": "public"
+	}
+}
