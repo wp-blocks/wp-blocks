@@ -28,9 +28,11 @@
 		}
 	},
 	"globalDependencies": [
-		".eslintrc.js",
-		".prettierrc",
+		".eslintrc.cjs",
+		".prettierrc.cjs",
+		".stylelintrc.cjs",
 		"api-extractor.json",
+		"tsconfig.base.json",
 		"tsconfig.json",
 		"scripts/**/*"
 	]
