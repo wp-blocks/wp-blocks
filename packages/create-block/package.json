@@ -25,12 +25,26 @@
 		"node": ">=14",
 		"npm": ">=6.14.4"
 	},
+	"scripts": {
+		"build:pkg": "../../scripts/build-pkg.js",
+		"build:esm": "../../scripts/build-esm.js",
+		"build:compile": "../../scripts/build-compile.js",
+		"build:types": "../../scripts/build-types.js",
+		"check": "tsc --build ./src",
+		"clean": "rimraf ./{dist,temp}",
+		"clean:all": "yarn clean && yarn clean:tsc",
+		"clean:tsc": "rimraf ./build"
+	},
 	"files": [
-		"lib"
+		"build"
 	],
-	"main": "index.js",
+	"type": "module",
+	"source": "src/index.ts",
+	"module": "./build/index.js",
+	"exports": "./build/index.js",
+	"types": "./build/index.d.ts",
 	"bin": {
-		"wp-create-block": "./index.js"
+		"wp-create-block": "./build/index.js"
 	},
 	"dependencies": {
 		"@wordpress/lazy-import": "^1.14.0",

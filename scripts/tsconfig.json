@@ -1,0 +1,12 @@
+{
+	"extends": "../tsconfig.base",
+	"compilerOptions": {
+		"lib": ["DOM", "DOM.Iterable", "ESNext"],
+		"target": "ESNext",
+		"module": "ESNext",
+		"allowJs": true,
+		"checkJs": true,
+		"noEmit": true
+	},
+	"include": ["**/*"]
+}

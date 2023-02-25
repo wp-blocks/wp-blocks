@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.base",
   "compilerOptions": {
     "rootDir": "./",
-    "outDir": "./build",
+    "noEmit": true,
 		"tsBuildInfoFile": "./build/tsconfig.tsbuildinfo",
   },
   "include": ["./index.js"]

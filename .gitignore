@@ -8,6 +8,8 @@ yarn-error.log*
 # The build directories
 build/
 build-types/
+lib/
+temp/
 
 # Coverage directory used by tools like istanbul
 coverage/

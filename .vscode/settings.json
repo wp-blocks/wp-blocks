@@ -18,22 +18,10 @@
 		"package-lock.json": true
 	},
 	"editor.quickSuggestionsDelay": 1000,
-	"[javascript]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": true
 	},
-	"[javascript-react]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
-	"[typescript-react]": {
-		"editor.formatOnSave": true,
-		"editor.defaultFormatter": "esbenp.prettier-vscode"
-	},
+	"eslint.validate": ["javascript", "javascript-react", "typescript", "typescript-react"],
 	"typescript.autoClosingTags": false,
 	"typescript.suggest.completeJSDocs": false,
 	"typescript.disableAutomaticTypeAcquisition": true,

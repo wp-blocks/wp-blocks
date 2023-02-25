@@ -3,8 +3,11 @@ module.exports = {
 	parser: '@typescript-eslint/parser',
 	parserOptions: {
 		sourceType: 'module',
-		project: [ './tsconfig.eslint.json', './packages/*/tsconfig.json' ],
-		tsconfigRootDir: __dirname,
+		project: [
+			'./tsconfig.eslint.json',
+			'./packages/*/tsconfig.json',
+			'./scripts/tsconfig.json',
+		],
 	},
 	extends: [
 		'plugin:@wordpress/eslint-plugin/recommended',
@@ -52,6 +55,14 @@ module.exports = {
 				'@typescript-eslint/restrict-template-expressions': 'off',
 			},
 		},
+		{
+			files: [ 'scripts/**/*' ],
+			rules: {
+				'no-console': 'off',
+				'jsdoc/no-undefined-types': 'off',
+				'@typescript-eslint/no-unsafe-argument': 'off',
+			},
+		},
 	],
 	settings: {
 		'import/parsers': {
@@ -63,6 +74,7 @@ module.exports = {
 				project: [
 					'./tsconfig.eslint.json',
 					'./packages/*/tsconfig.json',
+					'./scripts/tsconfig.json',
 				],
 			},
 		},

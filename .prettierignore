@@ -3,6 +3,8 @@ build
 build-module
 build-types
 coverage
+lib
 vendor
+temp
 
 **/*.md
