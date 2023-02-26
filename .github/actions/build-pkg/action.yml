@@ -1,0 +1,16 @@
+name: Build package
+
+runs:
+  using: "composite"
+  steps:
+    - name: Build package
+      shell: bash
+      run: pnpm build
+
+    - name: Archive build artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: pkg-build-${{ github.run_id }}
+        path: |
+          packages/*/build
+          packages/*/lib
