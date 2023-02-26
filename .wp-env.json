@@ -1,13 +1,13 @@
 {
-  "core": "WordPress/WordPress#6.1.1",
-  "phpVersion": "8.0",
-  "plugins": ["./examples/counter"],
-  "env": {
-    "development": {
-      "port": 3000
-    },
-    "tests": {
-      "port": 3001
-    }
-  }
+	"core": "WordPress/WordPress#6.1.1",
+	"phpVersion": "8.0",
+	"plugins": ["./examples/counter"],
+	"env": {
+		"development": {
+			"port": 3000
+		},
+		"tests": {
+			"port": 3001
+		}
+	}
 }

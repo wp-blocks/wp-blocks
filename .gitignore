@@ -11,6 +11,9 @@ build-types/
 lib/
 temp/
 
+# TurboRepo cache directories
+.turbo
+
 # Coverage directory used by tools like istanbul
 coverage/
 artifacts/

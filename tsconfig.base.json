@@ -3,7 +3,9 @@
 	"compilerOptions": {
 		"paths": {
 			"@wp-blocks/create-block": ["./packages/create-block/src/index.ts"],
-			"@wp-blocks/create-block-ts-template": ["./packages/create-block-ts-template/src/index.ts"],
+			"@wp-blocks/create-block-ts-template": [
+				"./packages/create-block-ts-template/src/index.ts"
+			],
 			"@wp-blocks/scripts": ["./packages/scripts/src/index.ts"]
 		}
 	}

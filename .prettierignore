@@ -8,3 +8,5 @@ vendor
 temp
 
 **/*.md
+
+pnpm-lock.yaml
