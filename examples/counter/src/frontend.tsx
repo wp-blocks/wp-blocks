@@ -2,9 +2,8 @@ import { render, useState } from '@wordpress/element';
 
 import Counter from './counter';
 
-// Run on window.load to reduce jank on page load
 window.addEventListener( 'load', () => {
-	const container = document.querySelector( '.wp-block-vinyl-counter' );
+	const container = document.querySelector( '.wp-block-x-counter' );
 
 	// Ensure our container exists
 	if ( ! container || ! ( container instanceof HTMLElement ) ) {

@@ -1,6 +1,7 @@
 {
 	"name": "@wp-blocks/example-counter",
 	"version": "0.1.0",
+	"private": true,
 	"description": "Example of how to enqueue React for use on the frontend of a Gutenberg block.",
 	"contributors": [
 		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
@@ -39,6 +40,7 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"type": "commonjs",
+	"source": "./src/index.ts",
 	"main": "./build/index.js",
-	"source": "./src/index.ts"
+	"types": "./build-types/index.d.js"
 }

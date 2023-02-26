@@ -1,11 +1,6 @@
 {
 	"extends": "./tsconfig.base",
 	"files": [],
-	"references": [
-		{ "path": "./examples/counter" },
-		{ "path": "./packages/create-block" },
-		{ "path": "./packages/create-block-ts-template" },
-		{ "path": "./packages/utils" }
-	],
+	"references": [{ "path": "./examples/counter" }, { "path": "./packages/utils" }],
 	"exclude": ["jest.config.cjs", "./lint-staged.config.js"]
 }

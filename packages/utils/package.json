@@ -9,7 +9,7 @@
 	"keywords": [
 		"utility"
 	],
-	"homepage": "https://github.com/wp-blocks/wp-blocks#readme",
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/utils#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/wp-blocks/wp-blocks.git",
