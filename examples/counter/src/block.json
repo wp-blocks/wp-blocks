@@ -1,0 +1,24 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "vinyl/counter",
+	"version": "0.1.0",
+	"title": "Counter",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "Example of how to enqueue React for use on the frontend of a Gutenberg block.",
+	"attributes": {
+		"count": {
+			"type": "number",
+			"default": 0
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "counter",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"script": "counter-frontend",
+	"style": "file:./style-index.css"
+}

@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./build-types",
+		"tsBuildInfoFile": "./build-types/tsconfig.tsbuildinfo",
+
+		"emitDeclarationOnly": true,
+		"resolveJsonModule": true
+	},
+	"include": ["./src/**/*", "./src/block.json"]
+}

@@ -5,6 +5,7 @@ module.exports = {
 		sourceType: 'module',
 		project: [
 			'./tsconfig.eslint.json',
+			'./examples/*/tsconfig.json',
 			'./packages/*/tsconfig.json',
 			'./scripts/tsconfig.json',
 		],
@@ -73,6 +74,7 @@ module.exports = {
 				alwaysTryTypes: true,
 				project: [
 					'./tsconfig.eslint.json',
+					'./examples/*/tsconfig.json',
 					'./packages/*/tsconfig.json',
 					'./scripts/tsconfig.json',
 				],
