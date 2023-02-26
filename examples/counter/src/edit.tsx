@@ -1,19 +1,7 @@
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
 import { useBlockProps } from '@wordpress/block-editor';
 import type { BlockEditProps } from '@wordpress/blocks';
 import type { WPElement } from '@wordpress/element';
 
-/**
- * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
- * Those files can contain any CSS code that gets applied to the editor.
- *
- * @see https://www.npmjs.com/package/@wordpress/scripts#using-css
- */
 import './editor.scss';
 
 import Counter from './counter';
@@ -36,9 +24,7 @@ export default function Edit( {
 }: BlockEditProps< Props > ): WPElement {
 	const blockProps = useBlockProps();
 
-	let { count } = attributes;
-
-	if ( typeof count !== 'number' ) count = 0;
+	const { count } = attributes;
 
 	const setCount = ( value: number ) => {
 		setAttributes( { count: value } );

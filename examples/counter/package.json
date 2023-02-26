@@ -1,5 +1,5 @@
 {
-	"name": "@wp-blocks/example-counter",
+	"name": "@wp-blocks/x-counter",
 	"version": "0.1.0",
 	"private": true,
 	"description": "Example of how to enqueue React for use on the frontend of a Gutenberg block.",
