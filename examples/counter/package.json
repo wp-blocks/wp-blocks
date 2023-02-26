@@ -15,7 +15,7 @@
 		"frontend",
 		"client"
 	],
-	"homepage": "https://github.com/wp-blocks/wp-blocks#readme",
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/examples/counter#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/wp-blocks/wp-blocks.git",
@@ -33,15 +33,10 @@
 		"format": "wp-scripts format",
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
-		"packages-update": "wp-scripts packages-update",
-		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start",
 		"start:hot": "wp-scripts start --hot",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js",
-		"wp-env:start": "wp-env start",
-		"wp-env:stop": "wp-env stop",
-		"wp-env:destroy": "wp-env destroy"
+		"test:unit": "wp-scripts test-unit-js"
 	},
 	"type": "commonjs",
 	"main": "./build/index.js",

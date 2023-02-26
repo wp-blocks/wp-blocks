@@ -8,7 +8,8 @@ import { useBlockProps } from '@wordpress/block-editor';
 import type { BlockSaveProps } from '@wordpress/blocks';
 import type { WPElement } from '@wordpress/element';
 
-import { Props } from './types';
+import Counter from './counter';
+import type { Props } from './types';
 
 /**
  * The save function defines the way in which the different attributes should
@@ -24,5 +25,9 @@ export default function save( {
 }: BlockSaveProps< Props > ): WPElement {
 	const { count } = attributes;
 
-	return <p { ...useBlockProps.save() }>{ `Counter value: ${ count }` }</p>;
+	return (
+		<div { ...useBlockProps.save() } data-count={ count }>
+			<Counter count={ count } />
+		</div>
+	);
 }

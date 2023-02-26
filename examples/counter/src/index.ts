@@ -32,7 +32,10 @@ registerBlockType( metadata.name, {
 	category: 'widgets',
 
 	attributes: {
-		count: 'number',
+		count: {
+			type: 'number',
+			default: 0,
+		},
 	},
 
 	/**
