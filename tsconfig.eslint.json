@@ -6,6 +6,7 @@
 		"allowJs": true
 	},
 	"include": [
+		"examples/*/*.js",
 		"scripts/**/*.ts",
 		".eslintrc.cjs",
 		".prettierrc.cjs",

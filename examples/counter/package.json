@@ -38,7 +38,10 @@
 		"start": "wp-scripts start",
 		"start:hot": "wp-scripts start --hot",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"wp-env:start": "wp-env start",
+		"wp-env:stop": "wp-env stop",
+		"wp-env:destroy": "wp-env destroy"
 	},
 	"type": "commonjs",
 	"main": "./build/index.js",
