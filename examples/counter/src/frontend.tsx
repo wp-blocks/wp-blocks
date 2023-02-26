@@ -2,7 +2,7 @@ import { render } from '@wordpress/element';
 
 // Run on window.load to reduce jank on page load
 window.addEventListener( 'load', () => {
-	const container = document.querySelector( '.wp-block-example-counter' );
+	const container = document.querySelector( '.wp-block-x-counter' );
 
 	// Ensure our container exists
 	if ( ! container ) {
