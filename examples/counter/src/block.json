@@ -1,11 +1,11 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "vinyl/counter",
+	"name": "x/counter",
 	"version": "0.1.0",
 	"title": "Counter",
 	"category": "widgets",
-	"icon": "smiley",
+	"icon": "plus",
 	"description": "Example of how to enqueue React for use on the frontend of a Gutenberg block.",
 	"attributes": {
 		"count": {

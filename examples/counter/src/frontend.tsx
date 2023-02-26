@@ -2,16 +2,16 @@ import { render, useState } from '@wordpress/element';
 
 import Counter from './counter';
 
-// Run on window.load to reduce jank on page load
 window.addEventListener( 'load', () => {
-	const container = document.querySelector( '.wp-block-vinyl-counter' );
+	const container = document.querySelector( '.wp-block-x-counter' );
 
-	// Ensure our container exists
+	// Ensure the container exists
 	if ( ! container || ! ( container instanceof HTMLElement ) ) {
 		return;
 	}
 
-	const parsed = parseInt( container.dataset.count as string ); // eslint-disable-line @typescript-eslint/non-nullable-type-assertion-style
+	// eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+	const parsed = parseInt( container.dataset.count as string );
 
 	const value = isNaN( parsed ) ? 0 : parsed;
 
