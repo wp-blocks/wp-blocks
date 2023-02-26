@@ -6,7 +6,7 @@
 		"tsBuildInfoFile": "./build/tsconfig.tsbuildinfo",
 
 		"emitDeclarationOnly": false,
-		"resolveJsonModule": true,
+		"resolveJsonModule": true
 	},
-	"include": [ "./src/**/*" ]
+	"include": ["./src/**/*"]
 }
