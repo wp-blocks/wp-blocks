@@ -1,13 +1,13 @@
 {
 	"extends": "./tsconfig.base.json",
 	"compilerOptions": {
-		"types": ["@types/node"],
 		"noEmit": true,
 		"allowJs": true
 	},
 	"include": [
 		"examples/*/*.js",
 		"scripts/**/*.ts",
+		"types/**/*.d.ts",
 		".eslintrc.cjs",
 		".prettierrc.cjs",
 		"jest.config.base.cjs",

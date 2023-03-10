@@ -38,6 +38,27 @@ module.exports = {
 				pathGroupsExcludedImportTypes: [ 'builtin' ],
 			},
 		],
+
+		'import/no-extraneous-dependencies': [
+			'error',
+			{
+				devDependencies: false,
+				optionalDependencies: false,
+				peerDependencies: false,
+				// This is pretty dumb
+				packageDir: [ './', './packages/utils', './packages/vinyl' ],
+			},
+		],
+
+		// Enable these once Gutenberg types are figured out.
+		'@typescript-eslint/no-unsafe-argument': 'off',
+		'@typescript-eslint/no-unsafe-assignment': 'off',
+		'@typescript-eslint/no-unsafe-call': 'off',
+		'@typescript-eslint/no-unsafe-member-access': 'off',
+		'@typescript-eslint/no-unsafe-return': 'off',
+
+		// This might be a bad idea...
+		'@wordpress/no-unsafe-wp-apis': 'off',
 	},
 	overrides: [
 		{

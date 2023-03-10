@@ -1,0 +1,46 @@
+{
+	"name": "@wp-blocks/vinyl-audio",
+	"version": "0.1.0",
+	"private": true,
+	"description": "An audio player block.",
+	"contributors": [
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"music",
+		"sound",
+		"podcast",
+		"recording"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/vinyl#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "package/vinyl"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6.14.4"
+	},
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start",
+		"start:hot": "wp-scripts start --hot",
+		"test:e2e": "wp-scripts test-e2e",
+		"test:unit": "wp-scripts test-unit-js"
+	},
+	"type": "commonjs",
+	"source": "./src/index.ts",
+	"main": "./build/index.js",
+	"types": "./build-types/index.d.js",
+	"dependencies": {
+		"classnames": "^2.3.2"
+	}
+}
