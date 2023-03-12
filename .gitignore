@@ -24,6 +24,9 @@ node_modules/
 # Optional npm cache directory
 .npm
 
+# TypeScript compiler build information
+tsconfig.tsbuildinfo
+
 # Optional eslint cache
 .eslintcache
 
