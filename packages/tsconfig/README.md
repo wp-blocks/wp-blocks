@@ -1,6 +1,12 @@
-# tsconfig
+# @wp-blocks/tsconfig
 
-> Shared [TypeScript config](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) for `@wp-block` projects
+## What is this?
+
+A [TypeScript config](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html) for `@wp-block` projects
+
+## When should I use this?
+
+This package is intended for usage in `wp-blocks` packages. Though it could be helpful to others developing WordPress Gutenberg blocks in TypeScript.
 
 ## Install
 
