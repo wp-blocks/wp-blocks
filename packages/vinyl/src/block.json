@@ -5,9 +5,10 @@
 	"version": "0.1.0",
 	"title": "Vinyl Audio Player",
 	"category": "media",
-	"icon": "plus",
+	"icon": "audio",
 	"description": "An audio player block.",
 	"keywords": ["music", "sound", "podcast", "recording"],
+	"textdomain": "vinyl",
 	"attributes": {
 		"src": {
 			"type": "string",
@@ -53,9 +54,8 @@
 			"padding": true
 		}
 	},
-	"textdomain": "vinyl",
 	"editorScript": "file:./index.js",
-	"editorStyle": "file:./index.css",
+	"editorStyle": "file:./editor.scss",
 	"script": "vinyl-audio-frontend",
-	"style": "file:./style-index.css"
+	"style": "file:./style.scss"
 }

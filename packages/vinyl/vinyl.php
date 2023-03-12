@@ -37,7 +37,7 @@ add_action(
 		$asset_file = include plugin_dir_path( __FILE__ ) . 'build/frontend.asset.php';
 
 		wp_register_script(
-			'counter-frontend',
+			'vinyl-audio-frontend',
 			plugins_url( 'build/frontend.js', __FILE__ ),
 			$asset_file['dependencies'],
 			$asset_file['version'],
