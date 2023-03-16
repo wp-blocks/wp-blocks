@@ -27,12 +27,6 @@
 			"type": "number",
 			"__experimentalRole": "content"
 		},
-		"autoplay": {
-			"type": "boolean",
-			"source": "attribute",
-			"selector": "audio",
-			"attribute": "autoplay"
-		},
 		"loop": {
 			"type": "boolean",
 			"source": "attribute",
@@ -54,8 +48,8 @@
 			"padding": true
 		}
 	},
-	"editorScript": "file:./index.js",
-	"editorStyle": "file:./editor.scss",
-	"script": "vinyl-audio-frontend",
-	"style": "file:./style.scss"
+	"viewScript": "file:./vinyl-frontend.js",
+	"editorScript": "file:./vinyl.js",
+	"style": "file:./vinyl.css",
+	"editorStyle": "file:./style-vinyl.css"
 }

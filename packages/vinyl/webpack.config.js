@@ -5,7 +5,7 @@ const defaultConfig = require( '@wordpress/scripts/config/webpack.config' );
 module.exports = {
 	...defaultConfig,
 	entry: {
-		index: path.resolve( process.cwd(), 'src', 'index' ),
-		frontend: path.resolve( process.cwd(), 'src', 'frontend' ),
+		vinyl: path.resolve( process.cwd(), 'src', 'index' ),
+		'vinyl-frontend': path.resolve( process.cwd(), 'src', 'frontend' ),
 	},
 };

@@ -18,7 +18,11 @@ import {
 	__experimentalGetElementClassName,
 } from '@wordpress/block-editor';
 import { createUpgradedEmbedBlock } from '@wordpress/block-library/src/embed/util';
-import { createBlock, getDefaultBlockName } from '@wordpress/blocks';
+import {
+	createBlock,
+	getDefaultBlockName,
+	type BlockEditProps,
+} from '@wordpress/blocks';
 import {
 	Disabled,
 	PanelBody,
@@ -35,23 +39,24 @@ import { audio as icon, caption as captionIcon } from '@wordpress/icons';
 import { store as noticesStore } from '@wordpress/notices';
 import classnames from 'classnames';
 
+import './editor.scss';
+
+import type { Props } from './types';
+
 /**
  * Internal dependencies
  */
 
 const ALLOWED_MEDIA_TYPES = [ 'audio' ];
 
-function AudioEdit( {
+function VinylEdit( {
 	attributes,
 	className,
 	setAttributes,
-	onReplace,
 	isSelected,
-	insertBlocksAfter,
-} ) {
-	const { id, autoplay, caption, loop, preload, src } = attributes;
-	const prevCaption = usePrevious( caption );
-	const [ showCaption, setShowCaption ] = useState( !! caption );
+	onReplace,
+}: BlockEditProps< Props > ) {
+	const { id, autoplay, loop, preload, src } = attributes;
 	const isTemporaryAudio = ! id && isBlobURL( src );
 	const mediaUpload = useSelect( ( select ) => {
 		const { getSettings } = select( blockEditorStore );
@@ -73,37 +78,13 @@ function AudioEdit( {
 		}
 	}, [] );
 
-	// We need to show the caption when changes come from
-	// history navigation(undo/redo).
-	useEffect( () => {
-		if ( caption && ! prevCaption ) {
-			setShowCaption( true );
-		}
-	}, [ caption, prevCaption ] );
-
-	// Focus the caption when we click to add one.
-	const captionRef = useCallback(
-		( node ) => {
-			if ( node && ! caption ) {
-				node.focus();
-			}
-		},
-		[ caption ]
-	);
-
-	useEffect( () => {
-		if ( ! isSelected && ! caption ) {
-			setShowCaption( false );
-		}
-	}, [ isSelected, caption ] );
-
 	function toggleAttribute( attribute ) {
 		return ( newValue ) => {
 			setAttributes( { [ attribute ]: newValue } );
 		};
 	}
 
-	function onSelectURL( newSrc ) {
+	function onSelectURL( newSrc: string ): void {
 		// Set the block's src from the edit component's state, and switch off
 		// the editing UI.
 		if ( newSrc !== src ) {
@@ -120,11 +101,11 @@ function AudioEdit( {
 	}
 
 	const { createErrorNotice } = useDispatch( noticesStore );
-	function onUploadError( message ) {
+	function onUploadError( message: string ) {
 		createErrorNotice( message, { type: 'snackbar' } );
 	}
 
-	function getAutoplayHelp( checked ) {
+	function getAutoplayHelp( checked: boolean ): string | null {
 		return checked
 			? __( 'Autoplay may cause usability issues for some users.' )
 			: null;
@@ -207,20 +188,11 @@ function AudioEdit( {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<ToggleControl
-						__nextHasNoMarginBottom
-						label={ __( 'Autoplay' ) }
-						onChange={ toggleAttribute( 'autoplay' ) }
-						checked={ autoplay }
-						help={ getAutoplayHelp }
-					/>
-					<ToggleControl
-						__nextHasNoMarginBottom
 						label={ __( 'Loop' ) }
 						onChange={ toggleAttribute( 'loop' ) }
 						checked={ loop }
 					/>
 					<SelectControl
-						__nextHasNoMarginBottom
 						label={ _x( 'Preload', 'noun; Audio block parameter' ) }
 						value={ preload || '' }
 						// `undefined` is required for the preload attribute to be unset.
@@ -247,36 +219,17 @@ function AudioEdit( {
 					so the user clicking on it won't play the
 					file or change the position slider when the controls are enabled.
 				*/ }
-				<Disabled isDisabled={ ! isSelected }>
-					<audio controls src={ src } />
-				</Disabled>
+				{ ! isSelected && (
+					<Disabled>
+						<audio controls src={ src } />
+					</Disabled>
+				) }
+				<audio controls src={ src } />
+
 				{ isTemporaryAudio && <Spinner /> }
-				{ showCaption &&
-					( ! RichText.isEmpty( caption ) || isSelected ) && (
-						<RichText
-							identifier="caption"
-							tagName="figcaption"
-							className={ __experimentalGetElementClassName(
-								'caption'
-							) }
-							ref={ captionRef }
-							aria-label={ __( 'Audio caption text' ) }
-							placeholder={ __( 'Add caption' ) }
-							value={ caption }
-							onChange={ ( value ) =>
-								setAttributes( { caption: value } )
-							}
-							inlineToolbar
-							__unstableOnSplitAtEnd={ () =>
-								insertBlocksAfter(
-									createBlock( getDefaultBlockName() )
-								)
-							}
-						/>
-					) }
 			</figure>
 		</>
 	);
 }
 
-export default AudioEdit;
+export default VinylEdit;

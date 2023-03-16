@@ -6,6 +6,7 @@
 	},
 	"include": [
 		"examples/*/*.js",
+		"packages/*/*.js",
 		"scripts/**/*.ts",
 		"types/**/*.d.ts",
 		".eslintrc.cjs",

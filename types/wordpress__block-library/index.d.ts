@@ -1,5 +1,5 @@
 declare module '@wordpress/block-library' {
-	export * from '@wordpress/block-library';
+	export * from '@types/wordpress__block-library';
 }
 
 declare module '@wordpress/block-library/src/embed/util' {

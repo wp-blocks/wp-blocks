@@ -15,7 +15,6 @@ import type { Props } from './types';
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
 registerBlockType( metadata as BlockConfiguration< Props >, {
-	...metadata,
 	icon,
 	// example: {
 	// 	attributes: {
@@ -24,12 +23,12 @@ registerBlockType( metadata as BlockConfiguration< Props >, {
 	// 	viewportWidth: 350,
 	// },
 	/**
-	 * @see {@link ./edit.js}
+	 * see ./edit.js
 	 */
 	edit,
 
 	/**
-	 * @see {@link ./save.js}
+	 * see ./save.js
 	 */
 	save,
 
