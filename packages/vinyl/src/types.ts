@@ -1,12 +1,13 @@
 import type { Transform } from '@wordpress/blocks';
 
 export interface Props {
-	autoplay: boolean;
-	caption: string;
-	id: number;
-	loop: boolean;
-	src: string;
-	preload: string;
+	caption?: string;
+	id?: number;
+	loop?: boolean;
+	src?: string;
+	preload?: string;
+
+	[ key: string ]: unknown;
 }
 
 /**

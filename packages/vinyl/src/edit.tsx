@@ -15,10 +15,8 @@ import {
 	RichText,
 	useBlockProps,
 	store as blockEditorStore,
-	__experimentalGetElementClassName,
 } from '@wordpress/block-editor';
-import { createUpgradedEmbedBlock } from '@wordpress/block-library/src/embed/util';
-import { createBlock, getDefaultBlockName } from '@wordpress/blocks';
+import { BlockEditProps } from '@wordpress/blocks';
 import {
 	Disabled,
 	PanelBody,
@@ -35,26 +33,30 @@ import { audio as icon, caption as captionIcon } from '@wordpress/icons';
 import { store as noticesStore } from '@wordpress/notices';
 import classnames from 'classnames';
 
+import './editor.scss';
+
+import type { Props } from './types';
+
 /**
  * Internal dependencies
  */
 
 const ALLOWED_MEDIA_TYPES = [ 'audio' ];
 
-function AudioEdit( {
+function VinylEdit( {
 	attributes,
 	className,
 	setAttributes,
-	onReplace,
 	isSelected,
-	insertBlocksAfter,
-} ) {
-	const { id, autoplay, caption, loop, preload, src } = attributes;
+}: BlockEditProps< Props > ) {
+	const { id, caption, loop, preload, src } = attributes;
 	const prevCaption = usePrevious( caption );
 	const [ showCaption, setShowCaption ] = useState( !! caption );
 	const isTemporaryAudio = ! id && isBlobURL( src );
 	const mediaUpload = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
+		const { getSettings } = select( blockEditorStore ) as {
+			getSettings: any;
+		};
 		return getSettings().mediaUpload;
 	}, [] );
 
@@ -83,7 +85,7 @@ function AudioEdit( {
 
 	// Focus the caption when we click to add one.
 	const captionRef = useCallback(
-		( node ) => {
+		( node: HTMLElement | null ) => {
 			if ( node && ! caption ) {
 				node.focus();
 			}
@@ -97,41 +99,27 @@ function AudioEdit( {
 		}
 	}, [ isSelected, caption ] );
 
-	function toggleAttribute( attribute ) {
-		return ( newValue ) => {
+	function toggleAttribute( attribute: any ) {
+		return ( newValue: any ) => {
 			setAttributes( { [ attribute ]: newValue } );
 		};
 	}
 
-	function onSelectURL( newSrc ) {
+	function onSelectURL( newSrc: string ): void {
 		// Set the block's src from the edit component's state, and switch off
 		// the editing UI.
 		if ( newSrc !== src ) {
-			// Check if there's an embed block that handles this URL.
-			const embedBlock = createUpgradedEmbedBlock( {
-				attributes: { url: newSrc },
-			} );
-			if ( undefined !== embedBlock && onReplace ) {
-				onReplace( embedBlock );
-				return;
-			}
 			setAttributes( { src: newSrc, id: undefined } );
 		}
 	}
 
 	const { createErrorNotice } = useDispatch( noticesStore );
-	function onUploadError( message ) {
+	function onUploadError( message: string ) {
 		createErrorNotice( message, { type: 'snackbar' } );
 	}
 
-	function getAutoplayHelp( checked ) {
-		return checked
-			? __( 'Autoplay may cause usability issues for some users.' )
-			: null;
-	}
-
-	function onSelectAudio( media ) {
-		if ( ! media || ! media.url ) {
+	function onSelectAudio( media: any ) {
+		if ( ! media?.url ) {
 			// In this case there was an error and we should continue in the editing state
 			// previous attributes should be removed because they may be temporary blob urls.
 			setAttributes( {
@@ -207,20 +195,11 @@ function AudioEdit( {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<ToggleControl
-						__nextHasNoMarginBottom
-						label={ __( 'Autoplay' ) }
-						onChange={ toggleAttribute( 'autoplay' ) }
-						checked={ autoplay }
-						help={ getAutoplayHelp }
-					/>
-					<ToggleControl
-						__nextHasNoMarginBottom
 						label={ __( 'Loop' ) }
 						onChange={ toggleAttribute( 'loop' ) }
 						checked={ loop }
 					/>
 					<SelectControl
-						__nextHasNoMarginBottom
 						label={ _x( 'Preload', 'noun; Audio block parameter' ) }
 						value={ preload || '' }
 						// `undefined` is required for the preload attribute to be unset.
@@ -247,18 +226,19 @@ function AudioEdit( {
 					so the user clicking on it won't play the
 					file or change the position slider when the controls are enabled.
 				*/ }
-				<Disabled isDisabled={ ! isSelected }>
+				{ isSelected ? (
 					<audio controls src={ src } />
-				</Disabled>
+				) : (
+					<Disabled>
+						<audio controls src={ src } />
+					</Disabled>
+				) }
 				{ isTemporaryAudio && <Spinner /> }
 				{ showCaption &&
 					( ! RichText.isEmpty( caption ) || isSelected ) && (
 						<RichText
 							identifier="caption"
 							tagName="figcaption"
-							className={ __experimentalGetElementClassName(
-								'caption'
-							) }
 							ref={ captionRef }
 							aria-label={ __( 'Audio caption text' ) }
 							placeholder={ __( 'Add caption' ) }
@@ -267,11 +247,6 @@ function AudioEdit( {
 								setAttributes( { caption: value } )
 							}
 							inlineToolbar
-							__unstableOnSplitAtEnd={ () =>
-								insertBlocksAfter(
-									createBlock( getDefaultBlockName() )
-								)
-							}
 						/>
 					) }
 			</figure>
@@ -279,4 +254,4 @@ function AudioEdit( {
 	);
 }
 
-export default AudioEdit;
+export default VinylEdit;

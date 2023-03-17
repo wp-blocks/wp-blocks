@@ -1,5 +1,5 @@
 declare module '@wordpress/block-editor' {
-	export * from '@wordpress/block-editor';
+	export * from '@types/wordpress__block-editor';
 
 	namespace MediaReplaceFlow {
 		interface Props {

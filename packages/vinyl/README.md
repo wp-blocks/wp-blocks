@@ -1,12 +1,12 @@
-# `@wp-block/vinyl`
+# @wp-block/vinyl
 
 ## What is this?
 
-An simple audio player block for WordPress Gutenberg.
+A simple audio player block for WordPress Gutenberg.
 
 ## When should I use this?
 
-This is currently a work in progress. You shouldn't use it yet on a production site. Though if you are interested in this project, please play with this plugin. Feedback and pull requests are welcome.
+This is currently a work in progress. You shouldn't use it yet on a production site. Though if you are interested in this, please try it out and submit feedback and/or a pull request.
 
 The goal of this block is to create a customizable audio player that builds on the functionality of the `core/audio` block.
 

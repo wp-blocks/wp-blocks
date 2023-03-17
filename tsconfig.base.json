@@ -2,7 +2,7 @@
 	"extends": "@wp-blocks/tsconfig",
 	"compilerOptions": {
 		"rootDir": ".",
-		"typeRoots": ["./node_modules/@types", "./types"],
+		"typeRoots": ["./types", "./node_modules/@types"],
 		"paths": {
 			"@wp-blocks/scripts": ["./packages/scripts/src/index.ts"]
 		}

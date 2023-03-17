@@ -30,7 +30,7 @@ packages/ # published and internal packages of wp-blocks
 scripts/  # internal build scripts
 ```
 
-[`wp-scripts`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) as used as much as possible to keep the build process similar to Gutenberg, though some packages use custom build scripts that are internal to `wp-blocks`.
+[`wp-scripts`](https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/) is used as much as possible to keep the build process similar to Gutenberg, though some packages use custom build scripts that are internal to `wp-blocks`.
 
 The linting and formatting are also similar to Gutenberg, most of the modification are for linting TypeScript.
 
