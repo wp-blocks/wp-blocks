@@ -1,0 +1,25 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "x/hello",
+	"version": "0.1.0",
+	"title": "Hello World",
+	"category": "widgets",
+	"icon": "smile",
+	"description": "Basic hello world example of a block in TypeScript",
+	"attributes": {
+		"name": {
+			"type": "string",
+			"source": "html",
+			"selector": "span",
+			"default": "world"
+		}
+	},
+	"supports": {
+		"html": false
+	},
+	"textdomain": "hello",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"style": "file:./style-index.css"
+}
