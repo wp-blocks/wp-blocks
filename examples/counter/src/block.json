@@ -19,6 +19,6 @@
 	"textdomain": "counter",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"script": "counter-frontend",
+	"script": "file:./frontend.js",
 	"style": "file:./style-index.css"
 }

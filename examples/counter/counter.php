@@ -27,21 +27,3 @@ add_action(
 		register_block_type( __DIR__ . '/build' );
 	}
 );
-
-/**
- * Register our script.
- */
-add_action(
-	'wp_enqueue_scripts',
-	function () {
-		$asset_file = include plugin_dir_path( __FILE__ ) . 'build/frontend.asset.php';
-
-		wp_register_script(
-			'counter-frontend',
-			plugins_url( 'build/frontend.js', __FILE__ ),
-			$asset_file['dependencies'],
-			$asset_file['version'],
-			true
-		);
-	}
-);

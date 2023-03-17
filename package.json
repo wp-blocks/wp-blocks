@@ -16,6 +16,7 @@
 	"type": "module",
 	"sideEffects": false,
 	"workspaces": [
+		"./examples/*",
 		"./packages/*"
 	],
 	"scripts": {
