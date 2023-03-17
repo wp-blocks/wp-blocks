@@ -12,7 +12,7 @@ The goal of this block is to create a customizable audio player that builds on t
 
 ## Goals
 
-- [ ] Replicate the functionality of `core/audio`.
+- [x] Replicate the functionality of `core/audio`.
 - [ ] Provide transforms to and from `core/audio`.
 - [ ] Accessible UI
 - [ ] Customizable UI
