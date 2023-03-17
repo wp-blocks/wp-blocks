@@ -15,14 +15,8 @@ import {
 	RichText,
 	useBlockProps,
 	store as blockEditorStore,
-	__experimentalGetElementClassName,
 } from '@wordpress/block-editor';
-import { createUpgradedEmbedBlock } from '@wordpress/block-library/src/embed/util';
-import {
-	createBlock,
-	getDefaultBlockName,
-	type BlockEditProps,
-} from '@wordpress/blocks';
+import { BlockEditProps } from '@wordpress/blocks';
 import {
 	Disabled,
 	PanelBody,
@@ -54,12 +48,15 @@ function VinylEdit( {
 	className,
 	setAttributes,
 	isSelected,
-	onReplace,
 }: BlockEditProps< Props > ) {
-	const { id, autoplay, loop, preload, src } = attributes;
+	const { id, caption, loop, preload, src } = attributes;
+	const prevCaption = usePrevious( caption );
+	const [ showCaption, setShowCaption ] = useState( !! caption );
 	const isTemporaryAudio = ! id && isBlobURL( src );
 	const mediaUpload = useSelect( ( select ) => {
-		const { getSettings } = select( blockEditorStore );
+		const { getSettings } = select( blockEditorStore ) as {
+			getSettings: any;
+		};
 		return getSettings().mediaUpload;
 	}, [] );
 
@@ -78,8 +75,32 @@ function VinylEdit( {
 		}
 	}, [] );
 
-	function toggleAttribute( attribute ) {
-		return ( newValue ) => {
+	// We need to show the caption when changes come from
+	// history navigation(undo/redo).
+	useEffect( () => {
+		if ( caption && ! prevCaption ) {
+			setShowCaption( true );
+		}
+	}, [ caption, prevCaption ] );
+
+	// Focus the caption when we click to add one.
+	const captionRef = useCallback(
+		( node: HTMLElement | null ) => {
+			if ( node && ! caption ) {
+				node.focus();
+			}
+		},
+		[ caption ]
+	);
+
+	useEffect( () => {
+		if ( ! isSelected && ! caption ) {
+			setShowCaption( false );
+		}
+	}, [ isSelected, caption ] );
+
+	function toggleAttribute( attribute: any ) {
+		return ( newValue: any ) => {
 			setAttributes( { [ attribute ]: newValue } );
 		};
 	}
@@ -88,14 +109,6 @@ function VinylEdit( {
 		// Set the block's src from the edit component's state, and switch off
 		// the editing UI.
 		if ( newSrc !== src ) {
-			// Check if there's an embed block that handles this URL.
-			const embedBlock = createUpgradedEmbedBlock( {
-				attributes: { url: newSrc },
-			} );
-			if ( undefined !== embedBlock && onReplace ) {
-				onReplace( embedBlock );
-				return;
-			}
 			setAttributes( { src: newSrc, id: undefined } );
 		}
 	}
@@ -105,14 +118,8 @@ function VinylEdit( {
 		createErrorNotice( message, { type: 'snackbar' } );
 	}
 
-	function getAutoplayHelp( checked: boolean ): string | null {
-		return checked
-			? __( 'Autoplay may cause usability issues for some users.' )
-			: null;
-	}
-
-	function onSelectAudio( media ) {
-		if ( ! media || ! media.url ) {
+	function onSelectAudio( media: any ) {
+		if ( ! media?.url ) {
 			// In this case there was an error and we should continue in the editing state
 			// previous attributes should be removed because they may be temporary blob urls.
 			setAttributes( {
@@ -219,14 +226,29 @@ function VinylEdit( {
 					so the user clicking on it won't play the
 					file or change the position slider when the controls are enabled.
 				*/ }
-				{ ! isSelected && (
+				{ isSelected ? (
+					<audio controls src={ src } />
+				) : (
 					<Disabled>
 						<audio controls src={ src } />
 					</Disabled>
 				) }
-				<audio controls src={ src } />
-
 				{ isTemporaryAudio && <Spinner /> }
+				{ showCaption &&
+					( ! RichText.isEmpty( caption ) || isSelected ) && (
+						<RichText
+							identifier="caption"
+							tagName="figcaption"
+							ref={ captionRef }
+							aria-label={ __( 'Audio caption text' ) }
+							placeholder={ __( 'Add caption' ) }
+							value={ caption }
+							onChange={ ( value ) =>
+								setAttributes( { caption: value } )
+							}
+							inlineToolbar
+						/>
+					) }
 			</figure>
 		</>
 	);
