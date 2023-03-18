@@ -14,5 +14,5 @@ The `@wordpress/scripts` does have command [`packages-update`](https://github.co
 ## Usage
 
 ```sh
-npx wp-update
+npx wp-update --target 15.1
 ```
