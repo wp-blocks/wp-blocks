@@ -125,8 +125,14 @@ export async function fetchVersions(
 async function fetchJsonFile( url: string ) {
 	const response = await fetch( url );
 	const text = await response.text();
-	const json = JSON.parse( text );
-	return json;
+	if ( response.status < 300 )
+		try {
+			return JSON.parse( text );
+		} catch ( error ) {
+			console.log( `The url does not contain a valid json file! ` );
+		}
+	console.log( pc.red( `Unable to parse "${ url }"` ) );
+	process.exit( 1 );
 }
 
 /**
