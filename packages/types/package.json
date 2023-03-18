@@ -1,0 +1,49 @@
+{
+	"name": "@wp-blocks/types",
+	"version": "0.1.0",
+	"description": "Type declaration patches to DefinitelyTyped WordPress packages.",
+	"contributors": [
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"gutenberg",
+		"blocks",
+		"types",
+		"typings"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/types#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "packages/types"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6.14.4"
+	},
+	"scripts": {
+		"check": "tsc --build"
+	},
+	"files": [
+		"wordpress__blob",
+		"wordpress__block-editor",
+		"wordpress__block-library",
+		"wordpress__blocks"
+	],
+	"type": "module",
+	"types": "./index.d.ts",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@types/wordpress__blob": "^2.8.0",
+		"@types/wordpress__block-editor": "^11.0.1",
+		"@types/wordpress__block-library": "^2.6.1",
+		"@types/wordpress__blocks": "^12.0.3"
+	}
+}

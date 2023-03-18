@@ -4,7 +4,7 @@
 
 ```ts
 
-/// <reference types="node" />
+/// <reference types="@types/node" />
 
 // @public
 export function ascend<T>(cb: (files: string[], cwd: string) => T | undefined, cwd?: string): Promise<T | undefined>;

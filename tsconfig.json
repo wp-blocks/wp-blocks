@@ -3,6 +3,7 @@
 	"files": [],
 	"references": [
 		{ "path": "./examples/counter" },
+		{ "path": "./packages/types" },
 		{ "path": "./packages/utils" },
 		{ "path": "./packages/vinyl" },
 		{ "path": "./packages/scripts" },
