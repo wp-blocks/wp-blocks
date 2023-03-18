@@ -1,0 +1,55 @@
+{
+	"name": "@wp-blocks/wp-update",
+	"version": "0.1.0",
+	"description": "Utility to update dependencies on Gutenberg to a specific release.",
+	"contributors": [
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"wordpress",
+		"gutenberg"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/update#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "packages/wp-update"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6.14.4"
+	},
+	"scripts": {
+		"build:compile": "../../scripts/build-compile.js",
+		"build:types": "../../scripts/build-types.js",
+		"check": "tsc --build ./src",
+		"clean": "rimraf ./{build,temp}",
+		"clean:all": "yarn clean && yarn clean:tsc",
+		"clean:tsc": "rimraf ./lib"
+	},
+	"files": [
+		"src",
+		"build"
+	],
+	"type": "module",
+	"source": "./src/index.ts",
+	"module": "./src/index.js",
+	"exports": "./src/index.js",
+	"types": "./build/index.d.ts",
+	"bin": "./bin.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"node-fetch": "^3.3.1",
+		"prettier": "^2.8.4",
+		"yargs": "^17.7.1"
+	},
+	"devDependencies": {
+		"@types/yargs": "^17.0.22"
+	}
+}

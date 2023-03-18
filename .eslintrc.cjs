@@ -46,7 +46,12 @@ module.exports = {
 				optionalDependencies: false,
 				peerDependencies: false,
 				// This is pretty dumb
-				packageDir: [ './', './packages/utils', './packages/vinyl' ],
+				packageDir: [
+					'./',
+					'./packages/utils',
+					'./packages/vinyl',
+					'./packages/wp-update',
+				],
 			},
 		],
 

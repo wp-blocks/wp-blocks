@@ -1,0 +1,7 @@
+{
+	"extends": "./tsconfig",
+	"compilerOptions": {
+		"declarationMap": true
+	},
+	"include": ["./src/**/*"]
+}
