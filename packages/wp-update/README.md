@@ -23,3 +23,6 @@ Optionally the `devDependencies` of a release can be included in the update as w
 npx @wp-blocks/wp-update --target 15.1 -D
 ```
 
+## License
+
+`@wp-blocks/wp-update` is free software, and is released under the terms of the GNU General Public License version 3. See [LICENSE.md](LICENSE.md) for complete license.
