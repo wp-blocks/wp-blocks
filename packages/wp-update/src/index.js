@@ -50,9 +50,12 @@ function parseDependencies( pkg ) {
 	if ( pkg.dependencies ) {
 		result = filterPackages( pkg.dependencies );
 	}
-	if ( pkg.devDependencies ) {
-		result = [ ...result, ...filterPackages( pkg.devDependencies ) ];
-	}
+	/**
+	 * This might not be necessary, build deps can be at the latest versions
+	 */
+	// if ( pkg.devDependencies ) {
+	// 	result = [ ...result, ...filterPackages( pkg.devDependencies ) ];
+	// }
 	return result;
 }
 
