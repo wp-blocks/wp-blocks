@@ -11,7 +11,7 @@ import yargs from 'yargs/yargs';
 // eslint-disable-next-line import/no-named-as-default-member
 const { format, resolveConfig } = prettier;
 
-import { fetchVersions } from './src/index.js';
+import { updateDependencies } from './build/index.js';
 
 const raw = readFileSync( './package.json' );
 const pkg = JSON.parse( raw );
@@ -32,34 +32,21 @@ const argv = yargs( process.argv.slice( 2 ) )
 			alias: 'target',
 			describe: 'The release of Gutenberg to target',
 		},
+		D: {
+			type: 'boolean',
+			alias: 'dev',
+			describe:
+				'Optionally update "devDependencies" to match Gutenberg targeted release.',
+		},
 	} )
 	.parseSync();
 
 /**
  * Update dependencies to target a release of Gutenberg.
  */
-
-const deps = await fetchVersions( argv.t );
-
-let updated = false;
-
-for ( const [ name, version ] of Object.entries( deps ) ) {
-	if ( pkg?.dependencies?.[ name ] ) {
-		console.log( `Updating ${ name }@${ version }` );
-		pkg.dependencies[ name ] = version;
-		updated = true;
-	}
-	/**
-	 * This might not be necessary, build deps can be at the latest versions
-	 */
-	// if ( pkg?.devDependencies?.[ name ] ) {
-	// 	console.log( `Updating ${ name }@${ version }` );
-	// 	pkg.devDependencies[ name ] = version;
-	// 	updated = true;
-	// }
-}
+const updated = updateDependencies( pkg, argv.t, { dev: argv.D } );
 
 if ( updated ) {
-	const stringified = JSON.stringify( pkg, null, 2 );
+	const stringified = JSON.stringify( updated, null, 2 );
 	writeFileSync( './package.json', format( stringified, prettierOptions ) );
 }

@@ -106,6 +106,12 @@ module.exports = {
 				],
 			},
 		},
+		jsdoc: {
+			tagNamePreference: {
+				// Override `@wordpress/eslint-plugin/recommended`
+				returns: 'returns',
+			},
+		},
 	},
 	env: {
 		browser: true,

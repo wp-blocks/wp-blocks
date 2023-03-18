@@ -19,6 +19,8 @@
 		"./packages/*"
 	],
 	"scripts": {
+		"clean": "turbo clean",
+		"clean:all": "turbo clean:all",
 		"build": "turbo build --filter=./packages/*",
 		"build:compile": "turbo build:compile --filter=./packages/*",
 		"build:types": "turbo build:types --filter=./packages/*",

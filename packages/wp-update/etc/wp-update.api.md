@@ -5,7 +5,30 @@
 ```ts
 
 // @public
-export function fetchVersions(release: string): Promise<Record<string, string>>;
+export function fetchVersions(release: string, options?: UpdateOptions): Promise<Record<string, string>>;
+
+// @public
+export interface PackageJson {
+    // (undocumented)
+    [key: string]: unknown;
+    // (undocumented)
+    dependencies?: Record<string, string>;
+    // (undocumented)
+    devDependencies?: Record<string, string>;
+    // (undocumented)
+    name: string;
+    // (undocumented)
+    version: string;
+}
+
+// @public
+export function updateDependencies(pkg: PackageJson, release: string, options?: UpdateOptions): Promise<PackageJson | undefined>;
+
+// @public (undocumented)
+export interface UpdateOptions {
+    // (undocumented)
+    dev?: true;
+}
 
 // (No @packageDocumentation comment for this package)
 
