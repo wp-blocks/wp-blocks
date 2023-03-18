@@ -13,9 +13,6 @@ export async function fetchVersions( release ) {
 	const baseUrl = ROOT_URL + `/release/${ release }`;
 	const pkg = await fetchJsonFile( `${ baseUrl }/package.json` );
 	const deps = parseDependencies( pkg );
-	if ( ! deps ) {
-		throw new Error( 'unable to fetch package.json from Gutenberg repo' );
-	}
 	const pkgs = await Promise.all(
 		deps.map( ( packagePath ) =>
 			fetchJsonFile( `${ baseUrl }/${ packagePath }/package.json` )
@@ -45,14 +42,28 @@ async function fetchJsonFile( url ) {
  * Parse `@wordpress` packages paths from the Gutenberg `package.json`.
  *
  * @param {Record<string, any>} pkg
- * @return {string[]|undefined} The paths to all the `@wordpress` packages of the monorepo
+ * @return {string[]} The paths to all the `@wordpress` packages of the monorepo
  */
 function parseDependencies( pkg ) {
+	/** @type {string[]} */
+	let result = [];
 	if ( pkg.dependencies ) {
-		return Object.entries( pkg.dependencies )
-			.filter( ( [ packageName ] ) =>
-				packageName.startsWith( '@wordpress' )
-			)
-			.map( ( [ , packagePath ] ) => packagePath.replace( 'file:', '' ) );
+		result = filterPackages( pkg.dependencies );
 	}
+	if ( pkg.devDependencies ) {
+		result = [ ...result, ...filterPackages( pkg.devDependencies ) ];
+	}
+	return result;
+}
+
+/**
+ * Collect `@wordpress` package paths from `dependencies` object.
+ *
+ * @param {Record<string, string>} dependencies Dependencies object from a package.json
+ * @return {string[]} Array package paths in the monorepo.
+ */
+function filterPackages( dependencies ) {
+	return Object.entries( dependencies )
+		.filter( ( [ packageName ] ) => packageName.startsWith( '@wordpress' ) )
+		.map( ( [ , packagePath ] ) => packagePath.replace( 'file:', '' ) );
 }

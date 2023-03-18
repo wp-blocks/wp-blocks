@@ -17,7 +17,7 @@ const raw = readFileSync( './package.json' );
 const pkg = JSON.parse( raw );
 const prettierOptions = {
 	...( await resolveConfig( process.cwd() ) ),
-	parser: 'babel',
+	parser: 'json',
 };
 
 if ( ! ( pkg?.dependencies || pkg?.devDependencies ) ) {
@@ -44,16 +44,22 @@ const deps = await fetchVersions( argv.t );
 let updated = false;
 
 for ( const [ name, version ] of Object.entries( deps ) ) {
-	if ( pkg.dependencies[ name ] ) {
+	if ( pkg?.dependencies?.[ name ] ) {
+		console.log( `Updating ${ name }@${ version }` );
 		pkg.dependencies[ name ] = version;
 		updated = true;
 	}
-	if ( pkg.devDependencies[ name ] ) {
-		pkg.devDependencies[ name ] = version;
-		updated = true;
-	}
+	/**
+	 * This might not be necessary, build deps can be at the latest versions
+	 */
+	// if ( pkg?.devDependencies?.[ name ] ) {
+	// 	console.log( `Updating ${ name }@${ version }` );
+	// 	pkg.devDependencies[ name ] = version;
+	// 	updated = true;
+	// }
 }
 
 if ( updated ) {
-	writeFileSync( './package.json', format( pkg, prettierOptions ) );
+	const stringified = JSON.stringify( pkg, null, 2 );
+	writeFileSync( './package.json', format( stringified, prettierOptions ) );
 }
