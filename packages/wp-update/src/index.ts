@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import fetch from 'node-fetch';
+import pc from 'picocolors';
 
 const ROOT_URL = 'https://github.com/WordPress/gutenberg/raw';
 
@@ -17,9 +18,20 @@ export interface PackageJson {
 	[ key: string ]: unknown;
 }
 
+/**
+ * Options interface for {@link updateDependencies}.
+ *
+ * @public
+ */
 export interface UpdateOptions {
 	dev?: true;
 }
+
+/**
+ * TODO move to `@wp-blocks/utils`
+ * https://stackoverflow.com/a/69328045/3586344
+ */
+type WithRequired< T, K extends keyof T > = T & { [ P in K ]-?: T[ P ] };
 
 /**
  * Update dependencies objects of `package.json`.
@@ -35,38 +47,42 @@ export async function updateDependencies(
 	release: string,
 	options: UpdateOptions = {}
 ): Promise< PackageJson | undefined > {
-	const result: PackageJson = { ...pkg };
+	const result = { ...pkg } as WithRequired<
+		PackageJson,
+		'dependencies' | 'devDependencies'
+	>;
 	let updated = false;
 
 	const deps = await fetchVersions( release, options );
 
-	if ( pkg.dependencies ) {
-		for ( const [ name, version ] of Object.entries( deps ) ) {
-			if (
-				pkg.dependencies[ name ] &&
-				pkg.dependencies[ name ] !== version
-			) {
-				console.log( `Updating ${ name }@${ version }` );
-				pkg.dependencies[ name ] = version;
-				updated = true;
-			}
-			/**
-			 * This is conceptually separate than the `-D` option. This is updating the
-			 * versions in the local `package.json` to match the target, which optionally
-			 * could include the `devDependencies` of the Gutenberg release.
-			 */
-			if (
-				pkg.devDependencies?.[ name ] &&
-				pkg.devDependencies[ name ] !== version
-			) {
-				console.log( `Updating ${ name }@${ version }` );
-				pkg.devDependencies[ name ] = version;
-				updated = true;
-			}
+	for ( const [ name, version ] of Object.entries( deps ) ) {
+		if ( pkg.dependencies?.[ name ] ) {
+			const status = maybeUpdate( {
+				name,
+				version,
+				input: pkg.dependencies,
+				output: result.dependencies,
+			} );
+			updated = updated || status;
+		}
+		/**
+		 * This is conceptually separate than the `-D` option. This is updating the
+		 * versions in the local `package.json` to match the target, which optionally
+		 * could include the `devDependencies` of the Gutenberg release.
+		 */
+		if ( pkg.devDependencies?.[ name ] ) {
+			const status = maybeUpdate( {
+				name,
+				version,
+				input: pkg.devDependencies,
+				output: result.devDependencies,
+			} );
+			updated = updated || status;
 		}
 	}
+
 	if ( updated ) {
-		return result;
+		return result as PackageJson;
 	}
 }
 
@@ -149,4 +165,33 @@ function filterPackages( dependencies: Record< string, string > ): string[] {
 	return Object.entries( dependencies )
 		.filter( ( [ packageName ] ) => packageName.startsWith( '@wordpress' ) )
 		.map( ( [ , packagePath ] ) => packagePath.replace( 'file:', '' ) );
+}
+
+/**
+ * Maybe update dependency.
+ *
+ * @param context         - The context object.
+ * @param context.name    - The name of the dependency.
+ * @param context.version - The target version of the dependency.
+ * @param context.input   - The original dependencies object.
+ * @param context.output  - The updated dependencies object.
+ */
+function maybeUpdate( context: {
+	name: string;
+	version: string;
+	input: Record< string, string >;
+	output: Record< string, string >;
+} ): boolean {
+	const { name, version, input, output } = context;
+	if ( input[ name ] !== version ) {
+		const current = input[ name ];
+		output[ name ] = version;
+		console.log(
+			pc.green( `${ name }@${ version }` ) +
+				pc.gray( ` Updated from v${ current }` )
+		);
+		return true;
+	}
+	console.log( pc.gray( `${ name }@${ version } Matches current version` ) );
+	return false;
 }

@@ -115,10 +115,12 @@ importers:
     specifiers:
       '@types/yargs': ^17.0.22
       node-fetch: ^3.3.1
+      picocolors: ^1.0.0
       prettier: ^2.8.4
       yargs: ^17.7.1
     dependencies:
       node-fetch: 3.3.1
+      picocolors: 1.0.0
       prettier: 2.8.4
       yargs: 17.7.1
     devDependencies:

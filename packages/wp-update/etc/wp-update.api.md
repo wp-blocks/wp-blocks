@@ -24,7 +24,7 @@ export interface PackageJson {
 // @public
 export function updateDependencies(pkg: PackageJson, release: string, options?: UpdateOptions): Promise<PackageJson | undefined>;
 
-// @public (undocumented)
+// @public
 export interface UpdateOptions {
     // (undocumented)
     dev?: true;

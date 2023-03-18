@@ -21,7 +21,7 @@ const prettierOptions = {
 };
 
 if ( ! ( pkg?.dependencies || pkg?.devDependencies ) ) {
-	console.log( 'No "@wordpress" dependencies found' );
+	console.log( 'No dependencies fields found in "./package.json"' );
 }
 
 const argv = yargs( process.argv.slice( 2 ) )
@@ -44,7 +44,7 @@ const argv = yargs( process.argv.slice( 2 ) )
 /**
  * Update dependencies to target a release of Gutenberg.
  */
-const updated = updateDependencies( pkg, argv.t, { dev: argv.D } );
+const updated = await updateDependencies( pkg, argv.t, { dev: argv.D } );
 
 if ( updated ) {
 	const stringified = JSON.stringify( updated, null, 2 );
