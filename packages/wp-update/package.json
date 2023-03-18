@@ -21,7 +21,7 @@
 	},
 	"engines": {
 		"node": ">=14.16",
-		"pnpm": ">=7"
+		"pnpm": ">=7.14.1"
 	},
 	"scripts": {
 		"build:pkg": "../../scripts/build-pkg.js",
@@ -30,7 +30,7 @@
 		"build:types": "../../scripts/build-types.js",
 		"check": "tsc --build ./src",
 		"clean": "rimraf ./{build,temp}",
-		"clean:all": "yarn clean && yarn clean:tsc",
+		"clean:all": "pnpm clean && pnpm clean:tsc",
 		"clean:tsc": "rimraf ./lib"
 	},
 	"files": [

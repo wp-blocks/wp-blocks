@@ -29,7 +29,7 @@
 		"build:types": "../../scripts/build-types.js",
 		"check": "tsc --build ./src",
 		"clean": "rimraf ./{build,temp}",
-		"clean:all": "yarn clean && yarn clean:tsc",
+		"clean:all": "pnpm clean && pnpm clean:tsc",
 		"clean:tsc": "rimraf ./lib"
 	},
 	"files": [
