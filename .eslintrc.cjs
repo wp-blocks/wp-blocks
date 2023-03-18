@@ -46,7 +46,12 @@ module.exports = {
 				optionalDependencies: false,
 				peerDependencies: false,
 				// This is pretty dumb
-				packageDir: [ './', './packages/utils', './packages/vinyl' ],
+				packageDir: [
+					'./',
+					'./packages/utils',
+					'./packages/vinyl',
+					'./packages/wp-update',
+				],
 			},
 		],
 
@@ -99,6 +104,12 @@ module.exports = {
 					'./packages/*/tsconfig.json',
 					'./scripts/tsconfig.json',
 				],
+			},
+		},
+		jsdoc: {
+			tagNamePreference: {
+				// Override `@wordpress/eslint-plugin/recommended`
+				returns: 'returns',
 			},
 		},
 	},

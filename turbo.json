@@ -10,21 +10,21 @@
 		"build:compile": {
 			"dependsOn": ["^build:compile"],
 			"inputs": ["src/**/*.{ts,tsx}", "tsconfig.json", "tsconfig.dev.json"],
-			"outputs": ["build/**/*"]
+			"outputs": ["lib/**/*"]
 		},
 		"build:types": {
 			"dependsOn": ["^build:types", "build:compile"],
 			"inputs": ["build/**/*.d.ts", "api-extractor.json"],
-			"outputs": ["etc/**/*", "dist/index.d.ts"]
+			"outputs": ["etc/**/*", "build/index.d.ts"]
 		},
 		"build:esm": {
 			"dependsOn": ["build:compile"],
 			"inputs": ["build/**/*.js"],
-			"outputs": ["dist/**/*.js"]
+			"outputs": ["build/**/*.js"]
 		},
 		"build": {
 			"dependsOn": ["^build", "build:esm", "build:types"],
-			"outputs": ["dist/**"]
+			"outputs": ["build/**"]
 		}
 	},
 	"globalDependencies": [

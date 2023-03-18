@@ -1,6 +1,11 @@
 {
 	"extends": "./tsconfig.base",
 	"files": [],
-	"references": [{ "path": "./examples/counter" }, { "path": "./packages/utils" }],
+	"references": [
+		{ "path": "./examples/counter" },
+		{ "path": "./packages/utils" },
+		{ "path": "./packages/vinyl" },
+		{ "path": "./packages/wp-update" }
+	],
 	"exclude": ["jest.config.cjs", "./lint-staged.config.js"]
 }
