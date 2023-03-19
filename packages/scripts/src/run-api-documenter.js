@@ -1,22 +1,13 @@
 import { exec } from './utils/exec.js';
-import { findExec } from './utils/find-exec.js';
 
 /**
  * Run `api-documenter`.
  */
-export default async function () {
-	const apiDocumenterPath = await findExec( 'api-documenter' );
-
-	/**
-	 * ApiDocumenter CLI arguments.
-	 */
+export default function () {
 	const apiDocumenterArgs = [ 'markdown', '-i', 'temp', '-o', 'docs' ];
-
-	console.log( `api-documenter ${ apiDocumenterArgs.join( ' ' ) }` );
-
-	exec( apiDocumenterPath, apiDocumenterArgs )
-		.then( () => process.exit( 0 ) )
-		.catch( ( code ) => {
-			process.exit( code );
-		} );
+	const pnpmArgs = [ 'api-documenter', ...apiDocumenterArgs ];
+	console.log( pnpmArgs.join( ' ' ) );
+	return exec( 'pnpm', pnpmArgs ).catch( ( code ) => {
+		process.exit( code );
+	} );
 }
