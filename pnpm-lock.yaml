@@ -30,6 +30,7 @@ importers:
       '@wordpress/stylelint-config': ^21.12.0
       '@wp-blocks/scripts': workspace:^0.1.0
       '@wp-blocks/tsconfig': workspace:^0.1.0
+      '@wp-blocks/types': workspace:^0.1.0
       '@wp-blocks/wp-update': workspace:^0.2.0
       babel-jest: ^29.4.3
       eslint: ^8.34.0
@@ -75,6 +76,7 @@ importers:
       '@wordpress/stylelint-config': 21.12.0_w5gtdy6oq4ictd5o4eu6befejy
       '@wp-blocks/scripts': link:packages/scripts
       '@wp-blocks/tsconfig': link:packages/tsconfig
+      '@wp-blocks/types': link:packages/types
       '@wp-blocks/wp-update': link:packages/wp-update
       babel-jest: 29.4.3_@babel+core@7.21.0
       eslint: 8.34.0
