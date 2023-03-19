@@ -25,8 +25,6 @@ declare module '@wordpress/blocks' {
 		clientId: string;
 		isSelectionEnabled: boolean;
 		toggleSelection: unknown;
-		__unstableLayoutClassNames?: unknown;
-		__unstableParentLayout?: unknown;
 
 		/**
 		 * TODO Find reference
