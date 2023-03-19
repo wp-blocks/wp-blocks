@@ -13,8 +13,6 @@ importers:
       '@types/jest': ^29.4.0
       '@types/jest-environment-puppeteer': ^5.0.3
       '@types/node': ^14.18.38
-      '@types/wordpress__block-editor': ^11.0.1
-      '@types/wordpress__blocks': ^12.0.3
       '@typescript-eslint/eslint-plugin': ^5.55.0
       '@typescript-eslint/parser': ^5.55.0
       '@wordpress/block-editor': 11.4.0
@@ -32,6 +30,7 @@ importers:
       '@wordpress/stylelint-config': ^21.12.0
       '@wp-blocks/scripts': workspace:^0.1.0
       '@wp-blocks/tsconfig': workspace:^0.1.0
+      '@wp-blocks/types': workspace:^0.1.0
       '@wp-blocks/wp-update': workspace:^0.2.0
       babel-jest: ^29.4.3
       eslint: ^8.34.0
@@ -60,8 +59,6 @@ importers:
       '@types/jest': 29.4.0
       '@types/jest-environment-puppeteer': 5.0.3
       '@types/node': 14.18.38
-      '@types/wordpress__block-editor': 11.0.1_biqbaboplfbrettd7655fr4n2y
-      '@types/wordpress__blocks': 12.0.3_biqbaboplfbrettd7655fr4n2y
       '@typescript-eslint/eslint-plugin': 5.55.0_ffn2sqnefbgfhdrixzvbbpw6bq
       '@typescript-eslint/parser': 5.55.0_qxbo2xm47qt6fxnlmgbosp4hva
       '@wordpress/block-editor': 11.4.0_biqbaboplfbrettd7655fr4n2y
@@ -79,6 +76,7 @@ importers:
       '@wordpress/stylelint-config': 21.12.0_w5gtdy6oq4ictd5o4eu6befejy
       '@wp-blocks/scripts': link:packages/scripts
       '@wp-blocks/tsconfig': link:packages/tsconfig
+      '@wp-blocks/types': link:packages/types
       '@wp-blocks/wp-update': link:packages/wp-update
       babel-jest: 29.4.3_@babel+core@7.21.0
       eslint: 8.34.0
@@ -116,6 +114,18 @@ importers:
 
   packages/tsconfig:
     specifiers: {}
+
+  packages/types:
+    specifiers:
+      '@types/wordpress__blob': ^2.8.0
+      '@types/wordpress__block-editor': ^11.0.1
+      '@types/wordpress__block-library': ^2.6.1
+      '@types/wordpress__blocks': ^12.0.3
+    dependencies:
+      '@types/wordpress__blob': 2.8.0
+      '@types/wordpress__block-editor': 11.0.1
+      '@types/wordpress__block-library': 2.6.1
+      '@types/wordpress__blocks': 12.0.3
 
   packages/utils:
     specifiers:
@@ -3103,34 +3113,45 @@ packages:
       source-map: 0.6.1
     dev: false
 
-  /@types/wordpress__block-editor/11.0.1_biqbaboplfbrettd7655fr4n2y:
+  /@types/wordpress__blob/2.8.0:
+    resolution: {integrity: sha512-woon7jOKcK9w9G+K0RYdDCK/7QdbSZ3aFpP2nvUJahCtqEnR/ZNsCdxUoZ91PfNtM7c8CVEy2qxGmf6AjKJUgg==}
+    deprecated: This is a stub types definition. wordpress__blob provides its own type definitions, so you do not need this installed.
+    dependencies:
+      '@wordpress/blob': 3.29.0
+    dev: false
+
+  /@types/wordpress__block-editor/11.0.1:
     resolution: {integrity: sha512-nGlo4ncu95rR+t1I6jca7ugTk+yJJheSBl8nmtkRFZJXfytb5SfEddywvI7TWkMVyjzDhFQcKQ7wIDomTTh3KQ==}
     dependencies:
       '@types/react': 18.0.28
-      '@types/wordpress__blocks': 12.0.3_biqbaboplfbrettd7655fr4n2y
-      '@types/wordpress__components': 23.0.1_biqbaboplfbrettd7655fr4n2y
+      '@types/wordpress__blocks': 12.0.3
+      '@types/wordpress__components': 23.0.1
       '@types/wordpress__data': 6.0.2
       '@types/wordpress__keycodes': 2.3.1
-      '@wordpress/element': 5.4.0
-      react-autosize-textarea: 7.1.0_biqbaboplfbrettd7655fr4n2y
+      '@wordpress/element': 5.6.0
+      react-autosize-textarea: 7.1.0
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@types/wordpress__blocks/12.0.3_biqbaboplfbrettd7655fr4n2y:
+  /@types/wordpress__block-library/2.6.1:
+    resolution: {integrity: sha512-x+V2iqNZiCbNHwMLxszv0qHZ0ooYXZYisKxUIGTOhlrQDrYIiSIZG2+6UgS65UFnwGQve3EGP/RlMYIpQT6TyQ==}
+    dev: false
+
+  /@types/wordpress__blocks/12.0.3:
     resolution: {integrity: sha512-T4L2ke78Augo6Ea0dY/9nRgdnl1DwyMFRBwkH8ny8HCPRXhWdYDUcew84yG/G/edvh49wse79fJW58kJ2GaePg==}
     dependencies:
       '@types/react': 18.0.28
-      '@types/wordpress__components': 23.0.1_biqbaboplfbrettd7655fr4n2y
+      '@types/wordpress__components': 23.0.1
       '@types/wordpress__shortcode': 2.3.3
-      '@wordpress/element': 5.4.0
+      '@wordpress/element': 5.6.0
     transitivePeerDependencies:
       - react
       - react-dom
     dev: false
 
-  /@types/wordpress__components/23.0.1_biqbaboplfbrettd7655fr4n2y:
+  /@types/wordpress__components/23.0.1:
     resolution: {integrity: sha512-mpAVr74ElANYR6f8+atultx4A1Md40vZeKfA2ZtgcJMWXQWez3OzP1W2g20BENxOo2kWVsp1r3Tcik/mt/8l/g==}
     dependencies:
       '@types/react': 18.0.28
@@ -3138,8 +3159,8 @@ packages:
       '@types/wordpress__notices': 3.5.1
       '@types/wordpress__rich-text': 6.0.0
       '@wordpress/element': 5.6.0
-      downshift: 6.1.12_react@18.2.0
-      re-resizable: 6.9.9_biqbaboplfbrettd7655fr4n2y
+      downshift: 6.1.12
+      re-resizable: 6.9.9
     transitivePeerDependencies:
       - react
       - react-dom
@@ -4102,20 +4123,6 @@ packages:
       - utf-8-validate
       - webpack-hot-middleware
       - webpack-plugin-serve
-    dev: false
-
-  /@wordpress/element/5.4.0:
-    resolution: {integrity: sha512-vOlLdqzmkJCNWXDSp+1bwdT721mkAnMIfFom5SQnAhNOb59Y4CJRNQ37Oh1P19kMEYTnYMi/1R0DtOShlId+iA==}
-    engines: {node: '>=12'}
-    dependencies:
-      '@babel/runtime': 7.21.0
-      '@types/react': 18.0.28
-      '@types/react-dom': 18.0.11
-      '@wordpress/escape-html': 2.29.0
-      change-case: 4.1.2
-      is-plain-object: 5.0.0
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
     dev: false
 
   /@wordpress/element/5.6.0:
@@ -6345,6 +6352,18 @@ packages:
     resolution: {integrity: sha512-Kv5nKlh6yRrdrGvxeJ2e5y2eRUpkUosIW4A2AS38zwSz27zu7ufDwQPi5Jhs3XAlGNetl3bmnGhQsMtkKJnj3w==}
     dependencies:
       no-case: 3.0.4
+      tslib: 2.5.0
+    dev: false
+
+  /downshift/6.1.12:
+    resolution: {integrity: sha512-7XB/iaSJVS4T8wGFT3WRXmSF1UlBHAA40DshZtkrIscIN+VC+Lh363skLxFTvJwtNgHxAMDGEHT4xsyQFWL+UA==}
+    peerDependencies:
+      react: '>=16.12.0'
+    dependencies:
+      '@babel/runtime': 7.21.0
+      compute-scroll-into-view: 1.0.20
+      prop-types: 15.8.1
+      react-is: 17.0.2
       tslib: 2.5.0
     dev: false
 
@@ -11323,6 +11342,13 @@ packages:
       unpipe: 1.0.0
     dev: false
 
+  /re-resizable/6.9.9:
+    resolution: {integrity: sha512-l+MBlKZffv/SicxDySKEEh42hR6m5bAHfNu3Tvxks2c4Ah+ldnWjfnVRwxo/nxF27SsUsxDS0raAzFuJNKABXA==}
+    peerDependencies:
+      react: ^16.13.1 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+    dev: false
+
   /re-resizable/6.9.9_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-l+MBlKZffv/SicxDySKEEh42hR6m5bAHfNu3Tvxks2c4Ah+ldnWjfnVRwxo/nxF27SsUsxDS0raAzFuJNKABXA==}
     peerDependencies:
@@ -11331,6 +11357,17 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /react-autosize-textarea/7.1.0:
+    resolution: {integrity: sha512-BHpjCDkuOlllZn3nLazY2F8oYO1tS2jHnWhcjTWQdcKiiMU6gHLNt/fzmqMSyerR0eTdKtfSIqtSeTtghNwS+g==}
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0 || ^16.0.0
+      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
+    dependencies:
+      autosize: 4.0.4
+      line-height: 0.3.1
+      prop-types: 15.8.1
     dev: false
 
   /react-autosize-textarea/7.1.0_biqbaboplfbrettd7655fr4n2y:

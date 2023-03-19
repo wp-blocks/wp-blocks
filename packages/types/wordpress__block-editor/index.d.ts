@@ -87,6 +87,4 @@ declare module '@wordpress/block-editor' {
 	export function MediaReplaceFlow(
 		props: MediaReplaceFlow.Props
 	): JSX.Element;
-
-	export function __experimentalGetElementClassName(element: string): string;
 }
