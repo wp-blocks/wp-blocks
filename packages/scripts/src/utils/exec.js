@@ -2,7 +2,7 @@
  * @typedef {import('node:child_process').SpawnOptions} SpawnOptions
  */
 
-import { spawn } from 'cross-spawn';
+import { spawn } from 'node:child_process';
 
 /**
  * Async `exec`.

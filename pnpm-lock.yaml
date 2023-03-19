@@ -30,6 +30,7 @@ importers:
       '@wordpress/prettier-config': ^2.12.0
       '@wordpress/scripts': ^26.0.0
       '@wordpress/stylelint-config': ^21.12.0
+      '@wp-blocks/scripts': workspace:^0.1.0
       '@wp-blocks/tsconfig': workspace:^0.1.0
       '@wp-blocks/wp-update': workspace:^0.1.0
       babel-jest: ^29.4.3
@@ -95,15 +96,33 @@ importers:
       stylelint: 14.16.1
       turbo: 1.8.1
       typescript: 5.0.2
+    devDependencies:
+      '@wp-blocks/scripts': link:packages/scripts
 
   examples/counter:
     specifiers: {}
+
+  packages/scripts:
+    specifiers:
+      '@types/cross-spawn': ^6.0.2
+      '@types/yargs': ^17.0.22
+      cross-spawn: ^7.0.3
+      yargs: ^17.7.1
+    dependencies:
+      cross-spawn: 7.0.3
+      yargs: 17.7.1
+    devDependencies:
+      '@types/cross-spawn': 6.0.2
+      '@types/yargs': 17.0.22
 
   packages/tsconfig:
     specifiers: {}
 
   packages/utils:
-    specifiers: {}
+    specifiers:
+      '@wp-blocks/scripts': workspace:^0.1.0
+    devDependencies:
+      '@wp-blocks/scripts': link:../scripts
 
   packages/vinyl:
     specifiers:
@@ -2810,6 +2829,12 @@ packages:
       '@types/node': 18.14.1
     dev: false
 
+  /@types/cross-spawn/6.0.2:
+    resolution: {integrity: sha512-KuwNhp3eza+Rhu8IFI5HUXRP0LIhqH5cAjubUvGXXthh4YYBuP2ntwEX+Cz8GJoZUHlKo247wPWOfA9LYEq4cw==}
+    dependencies:
+      '@types/node': 18.14.1
+    dev: true
+
   /@types/eslint-scope/3.7.4:
     resolution: {integrity: sha512-9K4zoImiZc3HlIp6AVUDE4CWYx22a+lhSZMYNpbjW04+YF0KWj4pJXnEMjdnFTiQibFFmElcsasJXDbdI/EPhA==}
     dependencies:
@@ -2950,7 +2975,6 @@ packages:
 
   /@types/node/18.14.1:
     resolution: {integrity: sha512-QH+37Qds3E0eDlReeboBxfHbX9omAcBCXEzswCu6jySP642jiM3cYSIkU/REqwhCUqXdonHFuBfJDiAJxMNhaQ==}
-    dev: false
 
   /@types/normalize-package-data/2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==}

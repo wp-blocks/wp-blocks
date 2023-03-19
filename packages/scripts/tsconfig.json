@@ -1,0 +1,12 @@
+{
+	"extends": "../../tsconfig.base",
+	"compilerOptions": {
+		"rootDir": "./",
+
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"noEmit": true,
+		"emitDeclarationOnly": false
+	},
+	"include": ["./bin/**/*", "./src/**/*"]
+}

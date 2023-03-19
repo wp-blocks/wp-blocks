@@ -1,0 +1,54 @@
+{
+	"name": "@wp-blocks/scripts",
+	"version": "0.1.0",
+	"description": "Build scripts for the wp-blocks monorepo",
+	"contributors": [
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"license": "GPL-2.0-or-later",
+	"keywords": [
+		"build",
+		"scripts"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/scripts#readme",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "packages/scripts"
+	},
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"engines": {
+		"node": ">=14",
+		"npm": ">=6.14.4"
+	},
+	"scripts": {
+		"check": "tsc --build ",
+		"clean": "rimraf ./{build,temp}",
+		"clean:all": "pnpm clean && pnpm clean:tsc",
+		"clean:tsc": "rimraf ./lib"
+	},
+	"files": [
+		"build",
+		"src"
+	],
+	"bin": {
+		"wp-blocks": "./bin/index.js"
+	},
+	"type": "module",
+	"source": "./src/index.ts",
+	"module": "./src/index.js",
+	"exports": "./src/index.js",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"cross-spawn": "^7.0.3",
+		"yargs": "^17.7.1"
+	},
+	"devDependencies": {
+		"@types/cross-spawn": "^6.0.2",
+		"@types/yargs": "^17.0.22"
+	}
+}

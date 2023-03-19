@@ -1,6 +1,6 @@
 {
 	"name": "@wp-blocks/utils",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "Utility functions",
 	"contributors": [
 		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
@@ -23,10 +23,10 @@
 		"npm": ">=6.14.4"
 	},
 	"scripts": {
-		"build:pkg": "../../scripts/build-pkg.js",
-		"build:esm": "../../scripts/build-esm.js",
-		"build:compile": "../../scripts/build-compile.js",
-		"build:types": "../../scripts/build-types.js",
+		"build:pkg": "wp-blocks build pkg",
+		"build:esm": "wp-blocks build esm",
+		"build:compile": "wp-blocks build compile --local",
+		"build:types": "wp-blocks build types --local",
 		"check": "tsc --build ./src",
 		"clean": "rimraf ./{build,temp}",
 		"clean:all": "pnpm clean && pnpm clean:tsc",
@@ -42,5 +42,8 @@
 	"types": "./build/index.d.ts",
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"@wp-blocks/scripts": "workspace:^0.1.0"
 	}
 }

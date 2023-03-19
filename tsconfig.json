@@ -5,6 +5,7 @@
 		{ "path": "./examples/counter" },
 		{ "path": "./packages/utils" },
 		{ "path": "./packages/vinyl" },
+		{ "path": "./packages/scripts" },
 		{ "path": "./packages/wp-update" }
 	],
 	"exclude": ["jest.config.cjs", "./lint-staged.config.js"]
