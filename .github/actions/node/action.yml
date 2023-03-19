@@ -1,4 +1,4 @@
-name: Setup node and yarn
+name: Setup node and pnpm
 
 runs:
   using: "composite"

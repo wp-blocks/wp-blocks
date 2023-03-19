@@ -23,7 +23,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Setup Node.js and Yarn
+      - name: Setup Node.js and pnpm
         uses: ./.github/actions/node
 
       - name: Build package
