@@ -32,7 +32,7 @@ importers:
       '@wordpress/stylelint-config': ^21.12.0
       '@wp-blocks/scripts': workspace:^0.1.0
       '@wp-blocks/tsconfig': workspace:^0.1.0
-      '@wp-blocks/wp-update': workspace:^0.1.0
+      '@wp-blocks/wp-update': workspace:^0.2.0
       babel-jest: ^29.4.3
       eslint: ^8.34.0
       eslint-import-resolver-typescript: ^3.5.3
@@ -77,6 +77,7 @@ importers:
       '@wordpress/prettier-config': 2.12.0_prettier@2.8.4
       '@wordpress/scripts': 26.0.0_4w3h7madzjlbgvvvqm4eewwmma
       '@wordpress/stylelint-config': 21.12.0_w5gtdy6oq4ictd5o4eu6befejy
+      '@wp-blocks/scripts': link:packages/scripts
       '@wp-blocks/tsconfig': link:packages/tsconfig
       '@wp-blocks/wp-update': link:packages/wp-update
       babel-jest: 29.4.3_@babel+core@7.21.0
@@ -96,8 +97,6 @@ importers:
       stylelint: 14.16.1
       turbo: 1.8.1
       typescript: 5.0.2
-    devDependencies:
-      '@wp-blocks/scripts': link:packages/scripts
 
   examples/counter:
     specifiers: {}
@@ -133,6 +132,7 @@ importers:
   packages/wp-update:
     specifiers:
       '@types/yargs': ^17.0.22
+      '@wp-blocks/scripts': workspace:^0.1.0
       node-fetch: ^3.3.1
       picocolors: ^1.0.0
       prettier: ^2.8.4
@@ -144,6 +144,7 @@ importers:
       yargs: 17.7.1
     devDependencies:
       '@types/yargs': 17.0.22
+      '@wp-blocks/scripts': link:../scripts
 
 packages:
 

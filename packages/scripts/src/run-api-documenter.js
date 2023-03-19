@@ -10,7 +10,7 @@ export default async function () {
 	/**
 	 * ApiDocumenter CLI arguments.
 	 */
-	const apiDocumenterArgs = [ 'markdown', '-i', './temp', '-o', './docs' ];
+	const apiDocumenterArgs = [ 'markdown', '-i', 'temp', '-o', 'docs' ];
 
 	console.log( `api-documenter ${ apiDocumenterArgs.join( ' ' ) }` );
 

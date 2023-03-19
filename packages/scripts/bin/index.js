@@ -8,6 +8,8 @@ import buildDocs from '../src/run-api-documenter.js';
 import buildTypes from '../src/run-api-extractor.js';
 import buildCompile from '../src/run-tsc.js';
 
+const CI = process.env.CI;
+
 const argv = yargs( process.argv.slice( 2 ) )
 	.command( [ 'build', 'compile' ], 'transpile TypeScript', ( yargs ) => {
 		yargs.options( {
@@ -42,8 +44,17 @@ const argv = yargs( process.argv.slice( 2 ) )
 
 const [ , cmd ] = argv._;
 
-const options = { local: !! argv.l };
-console.log( options );
+/**
+ * The `--local` flag is to indicate the build process is happening on a local
+ * development computer. In CI it should be `false`. Specifically `tsc` and
+ * `api-extractor` are provided different CLI arguments in a local environment.
+ *
+ * TODO This concept might be flawed. Currently if `CI=true` it works as intended,
+ * but overrides the `--local` flag that is in all the scripts, which seems counter
+ * intuitive.
+ */
+const options = { local: CI ? false : !! argv.l };
+
 if ( cmd === 'compile' ) {
 	await buildCompile( options );
 } else if ( cmd === 'docs' ) {

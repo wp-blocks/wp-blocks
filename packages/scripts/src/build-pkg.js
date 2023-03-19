@@ -1,6 +1,3 @@
-import buildEsm from './copy-esm.js';
-import buildTypes from './run-api-extractor.js';
-import buildCompile from './run-tsc.js';
 import { exec } from './utils/exec.js';
 
 /**
@@ -8,13 +5,13 @@ import { exec } from './utils/exec.js';
  * @param {boolean} options.local - Local development flag.
  */
 export default async function ( options ) {
-	if ( ! options.local ) {
-		await exec( 'pnpm', [ 'run', 'clean:all' ] );
+	if ( options.local ) {
+		await exec( 'pnpm', [ 'clean:all' ] );
 	}
 	try {
-		await buildCompile( options );
-		buildEsm();
-		await buildTypes( options );
+		await exec( 'pnpm', [ 'build:compile' ] );
+		await exec( 'pnpm', [ 'build:esm' ] );
+		await exec( 'pnpm', [ 'build:types' ] );
 	} catch ( code ) {
 		process.exit( code );
 	}
