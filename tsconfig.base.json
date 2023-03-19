@@ -4,7 +4,8 @@
 		"rootDir": ".",
 		"typeRoots": ["./types", "./node_modules/@types"],
 		"paths": {
-			"@wp-blocks/scripts": ["./packages/scripts/src/index.ts"]
+			"@wp-blocks/scripts": ["./packages/scripts/src/index.ts"],
+			"@wp-blocks/utils": ["./packages/utils/src/index.ts"]
 		}
 	}
 }

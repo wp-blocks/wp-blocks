@@ -15,7 +15,10 @@
 	"bugs": "https://github.com/wp-blocks/wp-blocks/issues",
 	"type": "module",
 	"sideEffects": false,
-	"workspaces": ["./examples/*", "./packages/*"],
+	"workspaces": [
+		"./examples/*",
+		"./packages/*"
+	],
 	"scripts": {
 		"clean": "turbo clean",
 		"clean:all": "turbo clean:all",
@@ -77,5 +80,8 @@
 		"stylelint": "^14.16.1",
 		"turbo": "^1.8.1",
 		"typescript": "^5.0.2"
+	},
+	"devDependencies": {
+		"@wp-blocks/scripts": "workspace:^0.1.0"
 	}
 }

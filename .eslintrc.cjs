@@ -48,6 +48,7 @@ module.exports = {
 				// This is pretty dumb
 				packageDir: [
 					'./',
+					'./packages/scripts',
 					'./packages/utils',
 					'./packages/vinyl',
 					'./packages/wp-update',
@@ -83,7 +84,7 @@ module.exports = {
 			},
 		},
 		{
-			files: [ 'scripts/**/*' ],
+			files: [ 'scripts/**/*', 'packages/scripts/**/*' ],
 			rules: {
 				'no-console': 'off',
 				'jsdoc/no-undefined-types': 'off',

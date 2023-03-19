@@ -7,6 +7,9 @@
 /// <reference types="node" />
 
 // @public
+export function ascend<T>(cb: (files: string[], cwd: string) => T | undefined, cwd?: string): Promise<T | undefined>;
+
+// @public
 export function copy(from: string, to: string, rename?: (basename: string) => string): void;
 
 // @public
@@ -14,6 +17,17 @@ export function isError(error: unknown): error is NodeJS.ErrnoException;
 
 // @public
 export const isObject: (input: unknown) => input is Record<string, unknown>;
+
+// @public
+export type JsonArray = JsonValue[];
+
+// @public
+export type JsonObject = Record<string, JsonValue>;
+
+// @public
+export type JsonValue = string | number | boolean | {
+    [x: string]: JsonValue;
+} | JsonValue[];
 
 // @public
 export function merge(target: Record<string, unknown>, source: Record<string, unknown>): void;

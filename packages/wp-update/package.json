@@ -24,10 +24,10 @@
 		"pnpm": ">=7.14.1"
 	},
 	"scripts": {
-		"build:pkg": "../../scripts/build-pkg.js",
-		"build:esm": "../../scripts/build-esm.js",
-		"build:compile": "../../scripts/build-compile.js",
-		"build:types": "../../scripts/build-types.js",
+		"build:pkg": "wp-blocks build pkg",
+		"build:esm": "wp-blocks build esm",
+		"build:compile": "wp-blocks build compile --local",
+		"build:types": "wp-blocks build types --local",
 		"check": "tsc --build ./src",
 		"clean": "rimraf ./{build,temp}",
 		"clean:all": "pnpm clean && pnpm clean:tsc",
