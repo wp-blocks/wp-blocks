@@ -10,6 +10,8 @@ env:
   CI: true
 
 jobs:
+  runs-on: ${{ matrix.os }}
+
   build:
     strategy:
       matrix:
