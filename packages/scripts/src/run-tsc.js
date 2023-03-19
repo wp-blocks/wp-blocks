@@ -1,5 +1,4 @@
 import { exec } from './utils/exec.js';
-import { findExec } from './utils/find-exec.js';
 
 /**
  * Run `tsc`.
@@ -8,18 +7,11 @@ import { findExec } from './utils/find-exec.js';
  * @param {boolean} options.local - Local development flag.
  */
 export default async function ( { local = true } ) {
-	const tscPath = await findExec( 'tsc' );
 	const tsConfigPath = local ? [ 'tsconfig.dev.json' ] : [];
-
 	const tscArgs = [ '--build', ...tsConfigPath ];
-
-	console.log( `tsc ${ tscArgs.join( ' ' ) }` );
-
-	await exec( tscPath, tscArgs )
-		.then( () => {
-			process.exit( 0 );
-		} )
-		.catch( ( code ) => {
-			process.exit( code );
-		} );
+	const pnpmArgs = [ 'tsc', ...tscArgs ];
+	console.log( pnpmArgs.join( ' ' ) );
+	return exec( 'pnpm', pnpmArgs ).catch( ( code ) => {
+		process.exit( code );
+	} );
 }
