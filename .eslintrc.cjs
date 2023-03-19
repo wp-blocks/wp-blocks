@@ -7,7 +7,6 @@ module.exports = {
 			'./tsconfig.eslint.json',
 			'./examples/*/tsconfig.json',
 			'./packages/*/tsconfig.json',
-			'./scripts/tsconfig.json',
 		],
 	},
 	extends: [
@@ -103,7 +102,6 @@ module.exports = {
 					'./tsconfig.eslint.json',
 					'./examples/*/tsconfig.json',
 					'./packages/*/tsconfig.json',
-					'./scripts/tsconfig.json',
 				],
 			},
 		},
