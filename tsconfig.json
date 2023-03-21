@@ -7,7 +7,7 @@
 		{ "path": "./packages/utils" },
 		{ "path": "./packages/vinyl" },
 		{ "path": "./packages/scripts" },
-		{ "path": "./packages/wp-update" }
+		{ "path": "./packages/wp-deps" }
 	],
 	"exclude": ["jest.config.cjs", "./lint-staged.config.js"]
 }

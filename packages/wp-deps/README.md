@@ -1,4 +1,4 @@
-# @wp-blocks/update
+# wp-deps
 
 ## What is this?
 
@@ -14,15 +14,15 @@ The `@wordpress/scripts` does have command [`packages-update`](https://github.co
 ## Usage
 
 ```sh
-npx @wp-blocks/wp-update --target 15.1
+npx wp-deps --target 15.1
 ```
 
 Optionally the `devDependencies` of a release can be included in the update as well. The versioning of development dependencies isn't typically as large of a issue when trying to target a specific release of Gutenberg, but it is made available if necessary for your situation.
 
 ```sh
-npx @wp-blocks/wp-update --target 15.1 -D
+npx wp-deps --target 15.1 -D
 ```
 
 ## License
 
-`@wp-blocks/wp-update` is free software, and is released under the terms of the GNU General Public License version 3. See [LICENSE.md](LICENSE.md) for complete license.
+`wp-deps` is free software, and is released under the terms of the GNU General Public License version 3. See [LICENSE.md](LICENSE.md) for complete license.
