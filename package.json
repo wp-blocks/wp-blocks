@@ -62,7 +62,6 @@
 		"@wp-blocks/scripts": "workspace:^0.1.0",
 		"@wp-blocks/tsconfig": "workspace:^0.1.0",
 		"@wp-blocks/types": "workspace:^0.1.0",
-		"@wp-blocks/wp-update": "workspace:^0.2.0",
 		"babel-jest": "^29.4.3",
 		"eslint": "^8.34.0",
 		"eslint-import-resolver-typescript": "^3.5.3",
@@ -79,6 +78,7 @@
 		"react-dom": "^18.2.0",
 		"stylelint": "^14.16.1",
 		"turbo": "^1.8.1",
-		"typescript": "^5.0.2"
+		"typescript": "^5.0.2",
+		"wp-deps": "workspace:^0.2.0"
 	}
 }

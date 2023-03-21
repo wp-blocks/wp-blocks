@@ -10,50 +10,19 @@
 		"wordpress",
 		"gutenberg"
 	],
-	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/wp-update#readme",
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/wp-deps#readme",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/wp-blocks/wp-blocks.git",
-		"directory": "packages/wp-update"
+		"directory": "packages/wp-deps"
 	},
 	"bugs": {
 		"url": "https://github.com/wp-blocks/wp-blocks/issues"
 	},
-	"engines": {
-		"node": ">=14.16",
-		"pnpm": ">=7.14.1"
-	},
-	"scripts": {
-		"build:pkg": "wp-blocks build pkg",
-		"build:esm": "wp-blocks build esm",
-		"build:compile": "wp-blocks build compile --local",
-		"build:types": "wp-blocks build types --local",
-		"check": "tsc --build ./src",
-		"clean": "rimraf ./{build,temp}",
-		"clean:all": "pnpm clean && pnpm clean:tsc",
-		"clean:tsc": "rimraf ./lib"
-	},
 	"files": [
-		"bin.js",
-		"build"
+		"README.md"
 	],
-	"type": "module",
-	"source": "./src/index.ts",
-	"module": "./build/index.js",
-	"exports": "./build/index.js",
-	"types": "./build/index.d.ts",
-	"bin": "./bin.js",
 	"publishConfig": {
 		"access": "public"
-	},
-	"dependencies": {
-		"node-fetch": "^3.3.1",
-		"picocolors": "^1.0.0",
-		"prettier": "^2.8.4",
-		"yargs": "^17.7.1"
-	},
-	"devDependencies": {
-		"@types/yargs": "^17.0.22",
-		"@wp-blocks/scripts": "workspace:^0.1.0"
 	}
 }

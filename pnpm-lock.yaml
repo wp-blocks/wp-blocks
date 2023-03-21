@@ -31,7 +31,6 @@ importers:
       '@wp-blocks/scripts': workspace:^0.1.0
       '@wp-blocks/tsconfig': workspace:^0.1.0
       '@wp-blocks/types': workspace:^0.1.0
-      '@wp-blocks/wp-update': workspace:^0.2.0
       babel-jest: ^29.4.3
       eslint: ^8.34.0
       eslint-import-resolver-typescript: ^3.5.3
@@ -49,6 +48,7 @@ importers:
       stylelint: ^14.16.1
       turbo: ^1.8.1
       typescript: ^5.0.2
+      wp-deps: workspace:^0.2.0
     dependencies:
       '@babel/core': 7.21.0
       '@babel/preset-typescript': 7.21.0_@babel+core@7.21.0
@@ -77,7 +77,6 @@ importers:
       '@wp-blocks/scripts': link:packages/scripts
       '@wp-blocks/tsconfig': link:packages/tsconfig
       '@wp-blocks/types': link:packages/types
-      '@wp-blocks/wp-update': link:packages/wp-update
       babel-jest: 29.4.3_@babel+core@7.21.0
       eslint: 8.34.0
       eslint-import-resolver-typescript: 3.5.3_mvgyw3chnqkp6sgfmmtihyjpnm
@@ -95,6 +94,7 @@ importers:
       stylelint: 14.16.1
       turbo: 1.8.1
       typescript: 5.0.2
+      wp-deps: link:packages/wp-deps
 
   examples/counter:
     specifiers: {}
@@ -139,7 +139,7 @@ importers:
     dependencies:
       classnames: 2.3.2
 
-  packages/wp-update:
+  packages/wp-deps:
     specifiers:
       '@types/yargs': ^17.0.22
       '@wp-blocks/scripts': workspace:^0.1.0

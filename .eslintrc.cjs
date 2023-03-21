@@ -50,7 +50,7 @@ module.exports = {
 					'./packages/scripts',
 					'./packages/utils',
 					'./packages/vinyl',
-					'./packages/wp-update',
+					'./packages/wp-deps',
 				],
 			},
 		],
