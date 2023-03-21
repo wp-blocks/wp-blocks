@@ -1,7 +1,7 @@
 {
 	"core": "WordPress/WordPress#6.1.1",
 	"phpVersion": "8.0",
-	"plugins": ["./examples/counter", "./examples/hello", "./packages/vinyl"],
+	"plugins": ["."],
 	"env": {
 		"development": {
 			"port": 3000

@@ -1,24 +1,25 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 2,
-	"name": "x/counter",
+	"name": "x/hello",
 	"version": "0.1.0",
-	"title": "Counter",
+	"title": "Hello World",
 	"category": "widgets",
-	"icon": "plus",
-	"description": "Example of how to enqueue React for use on the frontend of a Gutenberg block.",
+	"icon": "smile",
+	"description": "Basic hello world example of a block in TypeScript",
 	"attributes": {
-		"count": {
-			"type": "number",
-			"default": 0
+		"name": {
+			"type": "string",
+			"source": "html",
+			"selector": "span",
+			"default": "world"
 		}
 	},
 	"supports": {
 		"html": false
 	},
-	"textdomain": "counter",
+	"textdomain": "hello",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
-	"script": "file:./frontend.js",
 	"style": "file:./style-index.css"
 }

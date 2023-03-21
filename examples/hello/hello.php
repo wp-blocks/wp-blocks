@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name:       Counter
- * Description:       A Gutenberg block plugin example to enqueue React on the frontend.
+ * Plugin Name:       Hello
+ * Description:       A basic hello world block plugin example in TypeScript.
  * Requires at least: 6.1
  * Requires PHP:      7.0
  * Version:           0.1.0
@@ -9,9 +9,9 @@
  * Author URI:        https://johnhooks.io
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       counter
+ * Text Domain:       hello
  *
- * @package           counter
+ * @package           hello
  */
 
 /**
