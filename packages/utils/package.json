@@ -1,6 +1,6 @@
 {
 	"name": "@wp-blocks/utils",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Utility functions",
 	"contributors": [
 		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
