@@ -54,6 +54,6 @@
 	},
 	"devDependencies": {
 		"@types/yargs": "^17.0.22",
-		"@wp-blocks/scripts": "workspace:^0.1.0"
+		"@wp-blocks/scripts": "workspace:*"
 	}
 }

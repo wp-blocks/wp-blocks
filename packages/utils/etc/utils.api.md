@@ -13,6 +13,9 @@ export function ascend<T>(cb: (files: string[], cwd: string) => T | undefined, c
 export function copy(from: string, to: string, rename?: (basename: string) => string): void;
 
 // @public
+export function findFile(fileName: string | RegExp): Promise<string | undefined>;
+
+// @public
 export function isError(error: unknown): error is NodeJS.ErrnoException;
 
 // @public

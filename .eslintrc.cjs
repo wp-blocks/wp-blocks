@@ -51,6 +51,7 @@ module.exports = {
 					'./packages/utils',
 					'./packages/vinyl',
 					'./packages/wp-deps',
+					'./packages/wp-init',
 				],
 			},
 		],

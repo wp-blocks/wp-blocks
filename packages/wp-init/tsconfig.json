@@ -1,0 +1,14 @@
+{
+	"extends": "@wp-blocks/tsconfig",
+	"compilerOptions": {
+		"rootDir": "./src",
+		"outDir": "./lib",
+		"tsBuildInfoFile": "./build/tsconfig.tsbuildinfo",
+
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"emitDeclarationOnly": false
+	},
+	"references": [{ "path": "../utils" }],
+	"include": ["./src/**/*"]
+}
