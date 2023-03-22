@@ -1,6 +1,6 @@
 {
 	"name": "wp-init",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Utility to scaffold parts of WordPress block editor projects.",
 	"contributors": [
 		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
@@ -51,7 +51,7 @@
 	},
 	"dependencies": {
 		"@clack/prompts": "^0.6.3",
-		"@wp-blocks/utils": "workspace:^0.2.1",
+		"@wp-blocks/utils": "workspace:*",
 		"picocolors": "^1.0.0",
 		"yargs": "^17.7.1"
 	},
