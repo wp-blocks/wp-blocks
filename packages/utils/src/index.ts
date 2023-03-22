@@ -1,5 +1,6 @@
 export * from './ascend.js';
 export * from './copy.js';
+export * from './find-file.js';
 export * from './is-error.js';
 export * from './is-object.js';
 export * from './merge.js';

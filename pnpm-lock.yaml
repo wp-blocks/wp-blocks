@@ -28,9 +28,10 @@ importers:
       '@wordpress/prettier-config': ^2.12.0
       '@wordpress/scripts': ^26.0.0
       '@wordpress/stylelint-config': ^21.12.0
-      '@wp-blocks/scripts': workspace:^0.1.0
-      '@wp-blocks/tsconfig': workspace:^0.1.0
-      '@wp-blocks/types': workspace:^0.1.0
+      '@wp-blocks/scripts': workspace:*
+      '@wp-blocks/tsconfig': workspace:*
+      '@wp-blocks/types': workspace:*
+      '@wp-blocks/utils': workspace:*
       babel-jest: ^29.4.3
       eslint: ^8.34.0
       eslint-import-resolver-typescript: ^3.5.3
@@ -48,7 +49,8 @@ importers:
       stylelint: ^14.16.1
       turbo: ^1.8.1
       typescript: ^5.0.2
-      wp-deps: workspace:^0.2.0
+      wp-deps: workspace:*
+      wp-init: workspace:*
     dependencies:
       '@babel/core': 7.21.0
       '@babel/preset-typescript': 7.21.0_@babel+core@7.21.0
@@ -77,6 +79,7 @@ importers:
       '@wp-blocks/scripts': link:packages/scripts
       '@wp-blocks/tsconfig': link:packages/tsconfig
       '@wp-blocks/types': link:packages/types
+      '@wp-blocks/utils': link:packages/utils
       babel-jest: 29.4.3_@babel+core@7.21.0
       eslint: 8.34.0
       eslint-import-resolver-typescript: 3.5.3_mvgyw3chnqkp6sgfmmtihyjpnm
@@ -95,6 +98,7 @@ importers:
       turbo: 1.8.1
       typescript: 5.0.2
       wp-deps: link:packages/wp-deps
+      wp-init: link:packages/wp-init
 
   examples/counter:
     specifiers: {}
@@ -129,7 +133,7 @@ importers:
 
   packages/utils:
     specifiers:
-      '@wp-blocks/scripts': workspace:^0.1.0
+      '@wp-blocks/scripts': workspace:*
     devDependencies:
       '@wp-blocks/scripts': link:../scripts
 
@@ -142,7 +146,7 @@ importers:
   packages/wp-deps:
     specifiers:
       '@types/yargs': ^17.0.22
-      '@wp-blocks/scripts': workspace:^0.1.0
+      '@wp-blocks/scripts': workspace:*
       node-fetch: ^3.3.1
       picocolors: ^1.0.0
       prettier: ^2.8.4
@@ -155,6 +159,26 @@ importers:
     devDependencies:
       '@types/yargs': 17.0.22
       '@wp-blocks/scripts': link:../scripts
+
+  packages/wp-init:
+    specifiers:
+      '@clack/prompts': ^0.6.3
+      '@types/yargs': ^17.0.22
+      '@wp-blocks/scripts': workspace:*
+      '@wp-blocks/utils': workspace:^0.2.1
+      picocolors: ^1.0.0
+      yargs: ^17.7.1
+    dependencies:
+      '@clack/prompts': 0.6.3
+      '@wp-blocks/utils': link:../utils
+      picocolors: 1.0.0
+      yargs: 17.7.1
+    devDependencies:
+      '@types/yargs': 17.0.22
+      '@wp-blocks/scripts': link:../scripts
+
+  packages/wp-update:
+    specifiers: {}
 
 packages:
 
@@ -1492,6 +1516,23 @@ packages:
   /@bcoe/v8-coverage/0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
     dev: false
+
+  /@clack/core/0.3.2:
+    resolution: {integrity: sha512-FZnsNynwGDIDktx6PEZK1EuCkFpY4ldEX6VYvfl0dqeoLPb9Jpw1xoUXaVcGR8ExmYNm1w2vdGdJkEUYD/2pqg==}
+    dependencies:
+      picocolors: 1.0.0
+      sisteransi: 1.0.5
+    dev: false
+
+  /@clack/prompts/0.6.3:
+    resolution: {integrity: sha512-AM+kFmAHawpUQv2q9+mcB6jLKxXGjgu/r2EQjEwujgpCdzrST6BJqYw00GRn56/L/Izw5U7ImoLmy00X/r80Pw==}
+    dependencies:
+      '@clack/core': 0.3.2
+      picocolors: 1.0.0
+      sisteransi: 1.0.5
+    dev: false
+    bundledDependencies:
+      - is-unicode-supported
 
   /@csstools/selector-specificity/2.1.1_wajs5nedgkikc5pcuwett7legi:
     resolution: {integrity: sha512-jwx+WCqszn53YHOfvFMJJRd/B2GqkCBt+1MJSG6o5/s8+ytHMvDZXsJgUEWLk12UnLd7HYKac4BYU5i/Ron1Cw==}
