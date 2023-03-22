@@ -7,7 +7,10 @@
 
 		"module": "Node16",
 		"moduleResolution": "Node16",
-		"emitDeclarationOnly": false
+		"emitDeclarationOnly": false,
+		"paths": {
+			"@wp-blocks/utils": ["../utils/src/index.ts"]
+		}
 	},
 	"references": [{ "path": "../utils" }],
 	"include": ["./src/**/*"]

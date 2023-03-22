@@ -7,7 +7,10 @@
 /// <reference types="@types/node" />
 
 // @public
-export function ascend<T>(cb: (files: string[], cwd: string) => T | undefined, cwd?: string): Promise<T | undefined>;
+export function ascend<T>(cb: Ascender<T>, cwd?: string): Promise<T | undefined>;
+
+// @public (undocumented)
+export type Ascender<T> = (files: string[], cwd: string) => Promise<T | undefined> | T | undefined;
 
 // @public
 export function copy(from: string, to: string, rename?: (basename: string) => string): void;

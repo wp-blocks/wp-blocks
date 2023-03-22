@@ -1,6 +1,6 @@
 {
 	"name": "wp-init",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Utility to scaffold parts of WordPress block editor projects.",
 	"contributors": [
 		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
