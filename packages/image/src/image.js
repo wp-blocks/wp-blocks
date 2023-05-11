@@ -119,13 +119,23 @@ async function getImageCompressionOptions(imageFormats) {
 					],
 				},
 				{
-					type: (prev) => (prev === 'yes' ? 'select' : null),
+					type: (prev, values) => {
+						if (values.compress === 'no') {
+							return null; // Skip this question
+						}
+						return 'select';
+					},
 					name: 'compressor',
 					message: `Which compressor would you like to use for ${format} files?`,
 					choices: compressors.map((comp) => ({ title: comp, value: comp }))
 				},
 				{
-					type: 'number',
+					type: (prev, values) => {
+						if (values.compress === 'no') {
+							return null; // Skip this question
+						}
+						return 'number';
+					},
 					name: 'quality',
 					message: 'Enter the quality (1-100):',
 					initial: 75,
@@ -133,6 +143,11 @@ async function getImageCompressionOptions(imageFormats) {
 					max: 100,
 				},
 			]);
+
+			if (response.compress === 'no') {
+				console.log(`Skipping ${format} files...`);
+				continue;
+			}
 		}
 		options[format] = response;
 	}
@@ -239,8 +254,6 @@ export default async function main() {
 	const imageFormats = getImageFormatsInFolder(srcDir);
 
 	const compressionOptions = await getImageCompressionOptions(imageFormats);
-
-	console.log(compressionOptions);
 
 	convertImages(srcDir, distDir, compressionOptions);
 }

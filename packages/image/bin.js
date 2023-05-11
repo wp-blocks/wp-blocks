@@ -3,4 +3,7 @@
 
 import main from "./src/image.js";
 
-main();
+main().then( () => {
+	console.log( 'The end 🎉' );
+} );
+
