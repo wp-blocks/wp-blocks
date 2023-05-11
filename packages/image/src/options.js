@@ -1,29 +1,40 @@
-/* OPTIONS */
+/* eslint-disable no-console */
 import prompts from 'prompts';
 
 import { compressors, svgOptions } from './constants.js';
 
+/**
+ * Prompts the user for the source directory
+ *
+ * @type prompts.PromptObject<string>
+ */
 export const srcDirQuestion = {
 	type: 'text',
 	name: 'srcDir',
 	message: 'Enter the source directory:',
-	initial: './in',
+	initial: './src/images',
 };
 
+/**
+ * Prompts the user for the source and destination directories
+ *
+ * @type prompts.PromptObject<string>
+ */
 export const distDirQuestion = {
 	type: 'text',
 	name: 'distDir',
-	message: 'Enter the destination directory:',
-	initial: './out',
+	message:
+		'Enter the destination directory (leave empty to use the same folder):',
+	initial: './images',
 };
 
 /**
  * This function prompts the user for options to compress different image formats,
  * including SVG files with custom SVGO plugins.
  *
- * @param imageFormats - An array of image file formats (e.g. ['.jpg', '.png', '.svg'])
- *                     that the function will prompt the user about compressing.
- * @returns an object containing compression options for different image formats. The
+ * @param {Object} imageFormats - An array of image file formats (e.g. ['.jpg', '.png', '.svg'])
+ *                              that the function will prompt the user about compressing.
+ * @returns {Promise} an object containing compression options for different image formats. The
  * options are obtained through a series of prompts that ask the user whether they want
  * to compress each format, which compressor to use (if applicable), and the quality
  * level (if applicable). For SVG files, the user can also choose which SVGO plugins to
@@ -65,8 +76,8 @@ export async function getImageCompressionOptions( imageFormats ) {
 					],
 				},
 				{
-					type: ( prev, values ) => {
-						if ( values.compress === 'no' ) {
+					type: ( _prev, _values ) => {
+						if ( _values.compress === 'no' ) {
 							return null; // Skip this question
 						}
 						return 'select';
@@ -79,8 +90,8 @@ export async function getImageCompressionOptions( imageFormats ) {
 					} ) ),
 				},
 				{
-					type: ( prev, values ) => {
-						if ( values.compress === 'no' ) {
+					type: ( _prev, _values ) => {
+						if ( _values.compress === 'no' ) {
 							return null; // Skip this question
 						}
 						return 'number';
