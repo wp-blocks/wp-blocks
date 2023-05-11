@@ -21,12 +21,19 @@ export default async function main() {
 		distDirQuestion,
 	] );
 
+	// Get the image formats
 	const imageFormats = getImageFormatsInFolder( srcDir );
 
+	// Get the compression options
 	const compressionOptions = await getImageCompressionOptions( imageFormats );
 
+	// Start the timer
 	const startTime = Date.now();
+
+	// Then convert the images in the source directory
 	convertImages( srcDir, distDir, compressionOptions );
+
+	// Print the time elapsed
 	console.log(
 		'Time elapsed:',
 		( Date.now() - startTime ) / 1000,

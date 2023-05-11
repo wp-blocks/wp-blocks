@@ -6,7 +6,6 @@ export const InputFormats = [
 	'.png',
 	'.webp',
 	'.avif',
-	'.heic',
 	'.tiff',
 	'.gif',
 	'.svg',

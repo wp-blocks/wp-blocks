@@ -28,6 +28,8 @@ The script will prompt you to enter the source and destination directory paths. 
 
 The script supports the following image formats:
 
+- AVIF (.avif)
+- WEBP (.webp)
 - JPEG (.jpg, .jpeg)
 - PNG (.png)
 - GIF (.gif)
@@ -36,7 +38,10 @@ The script supports the following image formats:
 
 ### Available Compression Options
 
-- JPEG: `mozjpeg`
+- AVIF: `libvips`
+- WEBP: `libwebp`
+- JPEG: `libjpeg`
+- MOZJPEG: `mozjpeg`
 - PNG: `pngquant`
 - SVG: `svgo`
 

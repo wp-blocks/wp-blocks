@@ -56,6 +56,8 @@ export const distDirQuestion = {
  */
 export async function getImageCompressionOptions( imageFormats ) {
 	const options = {};
+	console.log( 'Formats found: ', imageFormats.join() );
+
 	for ( const format of imageFormats ) {
 		console.log( '=='.concat( format, '==' ) );
 		let response = {};
@@ -123,7 +125,7 @@ export async function getImageCompressionOptions( imageFormats ) {
 				{
 					type: ( _prev, _values ) => {
 						if (
-							_values.compress === 'no ' ||
+							_values.compress === 'no' ||
 							( _values.compressor !== 'mozjpeg' &&
 								_values.compressor !== 'jpeg' )
 						) {

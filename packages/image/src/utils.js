@@ -3,6 +3,8 @@
 import fs from 'fs';
 import path from 'path';
 
+import { InputFormats } from './constants.js';
+
 /**
  * The function returns compression options for a given image format.
  *
@@ -54,15 +56,7 @@ export function getImageFormatsInFolder( folderPath ) {
 			} else {
 				const ext = path.extname( file ).toLowerCase(); // get the file extension in lowercase
 
-				if (
-					ext === '.jpg' ||
-					ext === '.jpeg' ||
-					ext === '.png' ||
-					ext === '.gif' ||
-					ext === '.svg' ||
-					ext === '.gif' ||
-					ext === '.tiff'
-				) {
+				if ( InputFormats.includes( ext ) ) {
 					// check if it's an image file
 					imageFormats.add( ext ); // add the image format to the Set
 				}
