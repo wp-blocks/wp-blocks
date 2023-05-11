@@ -20,9 +20,6 @@ export function getCompressionOptions( imageFormat, options ) {
 	const formatOptions = options[ imageFormat ];
 
 	if ( ! formatOptions ) {
-		console.log(
-			`No compression options found for format: ${ imageFormat }`
-		);
 		return false;
 	}
 

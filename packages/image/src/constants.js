@@ -1,4 +1,16 @@
-export const compressors = [ 'avif', 'webp', 'mozjpeg' ];
+export const compressors = [ 'avif', 'webp', 'mozjpeg', 'jpg', 'png' ];
+
+export const InputFormats = [
+	'.jpg',
+	'.jpeg',
+	'.png',
+	'.webp',
+	'.avif',
+	'.heic',
+	'.tiff',
+	'.gif',
+	'.svg',
+];
 
 export const svgOptions = [
 	{ title: 'CleanupAttrs', value: 'cleanupAttrs' },

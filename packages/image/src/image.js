@@ -25,5 +25,11 @@ export default async function main() {
 
 	const compressionOptions = await getImageCompressionOptions( imageFormats );
 
+	const startTime = Date.now();
 	convertImages( srcDir, distDir, compressionOptions );
+	console.log(
+		'Time elapsed:',
+		( Date.now() - startTime ) / 1000,
+		'seconds'
+	);
 }

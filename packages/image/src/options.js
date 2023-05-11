@@ -1,4 +1,6 @@
 /* eslint-disable no-console */
+import fs from 'fs';
+
 import prompts from 'prompts';
 
 import { compressors, svgOptions } from './constants.js';
@@ -13,6 +15,18 @@ export const srcDirQuestion = {
 	name: 'srcDir',
 	message: 'Enter the source directory:',
 	initial: './src/images',
+	validate: async ( value ) => {
+		try {
+			// Check if the path exists
+			const stats = await fs.promises.stat( value );
+			if ( ! stats.isDirectory() ) {
+				return 'Path is not a directory';
+			}
+			return true;
+		} catch ( error ) {
+			return 'Path does not exist';
+		}
+	},
 };
 
 /**
@@ -24,7 +38,7 @@ export const distDirQuestion = {
 	type: 'text',
 	name: 'distDir',
 	message:
-		'Enter the destination directory (leave empty to use the same folder):',
+		'Enter the destination directory (same path as source to override existing images):',
 	initial: './images',
 };
 
@@ -43,6 +57,7 @@ export const distDirQuestion = {
 export async function getImageCompressionOptions( imageFormats ) {
 	const options = {};
 	for ( const format of imageFormats ) {
+		console.log( '=='.concat( format, '==' ) );
 		let response = {};
 		if ( format === '.svg' ) {
 			response = await prompts( {
@@ -91,7 +106,10 @@ export async function getImageCompressionOptions( imageFormats ) {
 				},
 				{
 					type: ( _prev, _values ) => {
-						if ( _values.compress === 'no' ) {
+						if (
+							_values.compress === 'no' ||
+							_values.compressor === '.png'
+						) {
 							return null; // Skip this question
 						}
 						return 'number';
@@ -102,11 +120,26 @@ export async function getImageCompressionOptions( imageFormats ) {
 					min: 1,
 					max: 100,
 				},
+				{
+					type: ( _prev, _values ) => {
+						if (
+							_values.compress === 'no ' ||
+							( _values.compressor !== 'mozjpeg' &&
+								_values.compressor !== 'jpeg' )
+						) {
+							return null; // Skip this question
+						}
+						return 'number';
+					},
+					name: 'progressive',
+					message: 'Progressive jpeg:',
+					initial: true,
+				},
 			] );
 
 			if ( response.compress === 'no' ) {
 				console.log( `Skipping ${ format } files...` );
-				continue;
+				return;
 			}
 		}
 		options[ format ] = response;

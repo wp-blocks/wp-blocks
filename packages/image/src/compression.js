@@ -5,6 +5,7 @@ import path from 'path';
 import sharp from 'sharp';
 import { optimize } from 'svgo';
 
+import { InputFormats } from './constants.js';
 import { getCompressionOptions } from './utils.js';
 
 /**
@@ -28,6 +29,17 @@ export function optimizeSvg( filePath, distPath, svgoOptions ) {
 
 	// Write the optimized SVG to the output file
 	fs.writeFileSync( distPath, optimizedSvg.data );
+}
+
+function getOutputExtension( compressor ) {
+	switch ( compressor ) {
+		case 'jpeg':
+		case 'jpg':
+		case 'mozjpeg':
+			return '.jpg';
+		default:
+			return '.'.concat( compressor );
+	}
 }
 
 /**
@@ -61,6 +73,8 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 			// Recursively call this function on the subdirectory
 			const subDir = path.join( distDir, file );
 			fs.mkdirSync( subDir, { recursive: true } );
+
+			// Call this function on the subdirectory
 			convertImages( filePath, subDir, compressionOptions );
 		} else {
 			// Get the extension of the file
@@ -73,23 +87,9 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 			);
 
 			// Check if the file is an image
-			if (
-				[
-					'.jpg',
-					'.jpeg',
-					'.png',
-					'.webp',
-					'.avif',
-					'.tiff',
-					'.gif',
-					'.svg',
-				].includes( extension ) &&
-				options
-			) {
+			if ( InputFormats.includes( extension ) && options ) {
 				// Apply compression options
 				if ( extension === '.svg' ) {
-					// Optimize the SVG
-
 					// Save the image to the destination directory
 					const distPath = distDir
 						? path.join( distDir, file )
@@ -100,19 +100,33 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 					let image = sharp( filePath );
 
 					if ( options?.compressor ) {
-						if ( options.compressor === 'avif' ) {
-							image = image.avif( {
-								quality: options.quality,
-							} );
-						} else if ( options.compressor === 'webp' ) {
-							image = image.webp( { quality: options.quality } );
-						} else if ( options.compressor === 'mozjpeg' ) {
-							image = image.jpeg( {
-								mozjpeg: true,
-								quality: options.quality,
-							} );
-						} else {
-							image = image.jpeg( { quality: options.quality } );
+						// Apply compression
+						switch ( options.compressor ) {
+							case 'avif':
+								image = image.avif( {
+									quality: options.quality,
+								} );
+								break;
+							case 'webp':
+								image = image.webp( {
+									quality: options.quality,
+								} );
+								break;
+							case 'mozjpeg':
+								image = image.jpeg( {
+									mozjpeg: true,
+									quality: options.quality,
+								} );
+								break;
+							case 'png':
+								image = image.png();
+								break;
+							case 'jpg':
+								image = image.jpeg( {
+									quality: options.quality,
+									progressive: options.progressive,
+								} );
+								break;
 						}
 					}
 
@@ -121,8 +135,7 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 						? path.join( distDir, file )
 						: filePath;
 					const distFileName = distPath.concat(
-						'.',
-						options.compressor
+						getOutputExtension( options.compressor )
 					);
 					image.toFile( distFileName );
 
