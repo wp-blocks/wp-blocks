@@ -164,21 +164,15 @@ function getCompressionOptions(imageFormat, options) {
 	return formatOptions;
 }
 
-async function optimizeSvg(filePath, distPath, svgoOptions) {
+function optimizeSvg(filePath, distPath, svgoOptions) {
 	// Read the SVG file from the file system
 	const svg = fs.readFileSync(filePath, 'utf8');
 
 	// Optimize the SVG with SVGO
-	const optimizedSvg = await optimize(svg, svgOptions);
-
-	// Get the filename from the filePath
-	const fileName = path.basename(filePath);
-
-	// Get the full path of the output file
-	const outputPath = path.join(distPath, fileName);
+	const optimizedSvg = optimize(svg, svgoOptions);
 
 	// Write the optimized SVG to the output file
-	fs.writeFileSync(outputPath, optimizedSvg.data);
+	fs.writeFileSync(distPath, optimizedSvg.data);
 }
 
 function convertImages(srcDir, distDir = '', compressionOptions = {}) {
@@ -204,7 +198,7 @@ function convertImages(srcDir, distDir = '', compressionOptions = {}) {
 			const extension = path.extname(filePath).toLowerCase();
 
 			// Check if the file is an image
-			if (['.jpg', '.jpeg', '.png', '.webp', '.avif', '.tiff', '.gif'].includes(extension)) {
+			if (['.jpg', '.jpeg', '.png', '.webp', '.avif', '.tiff', '.gif', '.svg'].includes(extension)) {
 				// Set the default options for the image format
 				let options = {};
 				if (extension in compressionOptions) {
@@ -214,7 +208,10 @@ function convertImages(srcDir, distDir = '', compressionOptions = {}) {
 				// Apply compression options
 				if (extension === '.svg') {
 					// Optimize the SVG
-					optimizeSvg(srcDir, { ...options.plugins });
+
+					// Save the image to the destination directory
+					const distPath = distDir ? path.join(distDir, file) : filePath;
+					optimizeSvg(filePath, distPath,{ ...options.plugins });
 
 				} else {
 
