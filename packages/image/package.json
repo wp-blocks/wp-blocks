@@ -1,0 +1,51 @@
+{
+	"name": "@wp-blocks/image",
+	"version": "0.0.1",
+	"description": "A cli that compress images",
+	"license": "GPL-2.0-or-later",
+	"contributors": [
+		"Erik Golinelli <erik@codekraft.it> (https://codekraft.it/)",
+		"John Hooks <bitmachina@outlook.com> (https://johnhooks.io/)"
+	],
+	"homepage": "https://github.com/wp-blocks/wp-blocks/tree/main/packages/image#readme",
+	"bugs": {
+		"url": "https://github.com/wp-blocks/wp-blocks/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/wp-blocks/wp-blocks.git",
+		"directory": "packages/image"
+	},
+	"engines": {
+		"node": ">=14.16",
+		"pnpm": ">=7.14.1"
+	},
+	"scripts": {
+		"image": "node ./bin.js"
+	},
+	"files": [
+		"bin.js",
+		"build"
+	],
+	"source": "./src/index.ts",
+	"module": "./build/index.js",
+	"exports": "./build/index.js",
+	"types": "./build/index.d.ts",
+	"bin": "bin.js",
+	"type": "module",
+	"publishConfig": {
+		"access": "public"
+	},
+	"dependencies": {
+		"@wp-blocks/utils": "workspace:*",
+		"prompts": "^2.4.2",
+		"sharp": "^0.32.1",
+		"svgo": "^3.0.2"
+	},
+	"devDependencies": {
+		"@types/node": "^18.11.18",
+		"@types/prompts": "^2.4.2",
+		"prettier": "^2.8.2",
+		"sharp": "^0.32.1"
+	}
+}
