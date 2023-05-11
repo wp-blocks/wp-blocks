@@ -1,9 +1,12 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 
-import main from "./src/image.js";
+import main from './src/image.js';
 
-main().then( () => {
-	console.log( 'The end 🎉' );
-} );
-
+await main()
+	.then( () => {
+		console.log( 'The end 🎉' );
+	} )
+	.catch( ( err ) => {
+		console.error( err );
+	} );

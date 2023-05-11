@@ -45,7 +45,7 @@
 	"devDependencies": {
 		"@types/node": "^18.11.18",
 		"@types/prompts": "^2.4.2",
-		"prettier": "^2.8.2",
-		"sharp": "^0.32.1"
+		"@types/sharp": "^0.32.0",
+		"prettier": "^2.8.2"
 	}
 }
