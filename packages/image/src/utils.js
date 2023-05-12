@@ -8,9 +8,9 @@ import { InputFormats } from './constants.js';
 /**
  * The function returns compression options for a given image format.
  *
- * @param {string} imageFormat - The format of the image that needs to be compressed, such as
+ * @param {string} imageFormat The format of the image that needs to be compressed, such as
  *                             "jpeg", "png", etc.
- * @param {Object} options     - The options parameter is an object that contains compression
+ * @param {Object} options     The options parameter is an object that contains compression
  *                             options for different image formats. It is expected to have properties for each
  *                             supported image format, where the property name is the format name (e.g. "jpeg",
  *                             "png") and the value is an object containing compression options for that format.
