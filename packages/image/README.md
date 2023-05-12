@@ -1,7 +1,10 @@
 # @wp-blocks/image
-#### Node.js Image Compression and Optimization Script
 
-This Node.js script helps to compress and optimize images in a given directory. The script supports different image formats and uses various compression algorithms to reduce the file size of images.
+## What is this?
+A Node.js command-line tool to compress and optimize images, using different algorithms to reduce file size.
+
+## Why Use This?
+If you have a large number of images in a folder that need to be compressed and optimized, this package can be a lifesaver. With just one command, you can easily reduce the size of your images, making them load faster on your website. Whether you need to compress JPGs, optimize SVGs, or generate compressed AVIF or WebP images, this package has got you covered. It's a simple and effective way to make your website more efficient and your users happier. Give it a try and see the difference it can make!
 
 ## Requirements
 
