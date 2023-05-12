@@ -42,6 +42,88 @@ export const distDirQuestion = {
 	initial: './images',
 };
 
+const promptsToAskforSVGs = [
+	{
+		type: 'select',
+		name: 'compress',
+		message: `Would you like to compress ".svg" files with SVGO?`,
+		choices: [
+			{
+				title: 'Yes, with default options',
+				value: 'default',
+			},
+			{ title: 'Yes, with custom options', value: 'custom' },
+			{ title: 'No', value: 'no' },
+		],
+	},
+	{
+		type: ( _prev, _values ) => {
+			if ( _values.compress === 'custom' ) {
+				return null; // Skip this question
+			}
+			return 'multiselect';
+		},
+		name: 'plugins',
+		message: 'Which SVGO plugins do you want to use?',
+		choices: svgOptions,
+		hint: '- Space to select. Return to submit',
+	},
+];
+
+const promptsToAsk = ( format ) => [
+	{
+		type: 'select',
+		name: 'compress',
+		message: `Would you like to compress ${ format } files?`,
+		choices: [
+			{ title: 'Yes', value: 'yes' },
+			{ title: 'No', value: 'no' },
+		],
+	},
+	{
+		type: ( _prev, _values ) => {
+			if ( _values.compress === 'no' ) {
+				return null; // Skip this question
+			}
+			return 'select';
+		},
+		name: 'compressor',
+		message: `Which compressor would you like to use for ${ format } files?`,
+		choices: compressors.map( ( comp ) => ( {
+			title: comp,
+			value: comp,
+		} ) ),
+	},
+	{
+		type: ( _prev, _values ) => {
+			if ( _values.compress === 'no' || _values.compressor === '.png' ) {
+				return null; // Skip this question
+			}
+			return 'number';
+		},
+		name: 'quality',
+		message: 'Enter the quality (1-100):',
+		initial: 75,
+		min: 1,
+		max: 100,
+	},
+	{
+		type: ( _prev, _values ) => {
+			if (
+				_values.compress === 'no' ||
+				( _values.compressor !== 'mozjpeg' &&
+					_values.compressor !== 'jpeg' )
+			) {
+				return null; // Skip this question
+			}
+			return 'number';
+		},
+		name: 'progressive',
+		message: 'Progressive jpeg:',
+		initial: true,
+	},
+];
+
 /**
  * This function prompts the user for options to compress different image formats,
  * including SVG files with custom SVGO plugins.
@@ -56,95 +138,25 @@ export const distDirQuestion = {
  */
 export async function getImageCompressionOptions( imageFormats ) {
 	const options = {};
-	console.log( 'Formats found: ', imageFormats.join() );
 
 	for ( const format of imageFormats ) {
 		console.log( '=='.concat( format, '==' ) );
 		let response = {};
-		if ( format === '.svg' ) {
-			response = await prompts( {
-				type: 'select',
-				name: 'compress',
-				message: `Would you like to compress ${ format } files with SVGO?`,
-				choices: [
-					{ title: 'Yes, with default options', value: 'default' },
-					{ title: 'Yes, with custom options', value: 'custom' },
-					{ title: 'No', value: 'no' },
-				],
-			} );
-			if ( response.compress === 'custom' ) {
-				response = await prompts( {
-					type: 'multiselect',
-					name: 'plugins',
-					message: 'Which SVGO plugins do you want to use?',
-					choices: svgOptions,
-					hint: '- Space to select. Return to submit',
-				} );
-			}
-		} else {
-			response = await prompts( [
-				{
-					type: 'select',
-					name: 'compress',
-					message: `Would you like to compress ${ format } files?`,
-					choices: [
-						{ title: 'Yes', value: 'yes' },
-						{ title: 'No', value: 'no' },
-					],
-				},
-				{
-					type: ( _prev, _values ) => {
-						if ( _values.compress === 'no' ) {
-							return null; // Skip this question
-						}
-						return 'select';
-					},
-					name: 'compressor',
-					message: `Which compressor would you like to use for ${ format } files?`,
-					choices: compressors.map( ( comp ) => ( {
-						title: comp,
-						value: comp,
-					} ) ),
-				},
-				{
-					type: ( _prev, _values ) => {
-						if (
-							_values.compress === 'no' ||
-							_values.compressor === '.png'
-						) {
-							return null; // Skip this question
-						}
-						return 'number';
-					},
-					name: 'quality',
-					message: 'Enter the quality (1-100):',
-					initial: 75,
-					min: 1,
-					max: 100,
-				},
-				{
-					type: ( _prev, _values ) => {
-						if (
-							_values.compress === 'no' ||
-							( _values.compressor !== 'mozjpeg' &&
-								_values.compressor !== 'jpeg' )
-						) {
-							return null; // Skip this question
-						}
-						return 'number';
-					},
-					name: 'progressive',
-					message: 'Progressive jpeg:',
-					initial: true,
-				},
-			] );
+		// If the format is SVG
 
-			if ( response.compress === 'no' ) {
-				console.log( `Skipping ${ format } files...` );
-				return;
-			}
+		if ( format === '.svg' ) {
+			response = await prompts( promptsToAskforSVGs );
+		} else {
+			response = await prompts( promptsToAsk( format ) );
 		}
+
+		if ( response.compress === 'no' ) {
+			console.log( `Skipping ${ format } files...` );
+			continue;
+		}
+
 		options[ format ] = response;
 	}
+
 	return options;
 }
