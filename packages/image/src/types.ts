@@ -3,9 +3,9 @@ import { Config as SvgoConfig } from 'svgo';
 import { Compressor } from './constants.js';
 
 export interface CompressionOptions {
-	compress: boolean;
+	compress: string;
 	compressor?: Compressor;
 	quality?: number;
-	progressive?: boolean;
+	progressive?: string;
 	plugins?: SvgoConfig[];
 }

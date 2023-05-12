@@ -76,7 +76,7 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 	const files = fs.readdirSync( srcDir );
 
 	// Loop through the files in the directory
-	files.forEach( ( file ) => {
+	files.forEach( ( file: string ) => {
 		// Get the full path of the file
 		const filePath = path.join( srcDir, file );
 
@@ -111,13 +111,14 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 					const distPath = distDir
 						? path.join( distDir, file )
 						: filePath;
+					// Save the image to the destination directory
 					optimizeSvg( filePath, distPath, { ...options.plugins } );
 				} else {
 					// Load the image with sharp
 					let image = sharp( filePath );
 
+					// Apply compression options if specified in the options
 					if ( options.compressor ) {
-						// Apply compression
 						switch ( options.compressor ) {
 							case 'avif':
 								image = image.avif( {
@@ -151,6 +152,8 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 					const distPath = distDir
 						? path.join( distDir, file )
 						: filePath;
+
+					// Save the image to the destination directory
 					const distFileName = distPath.concat(
 						getOutputExtension( options.compressor, extension )
 					);
@@ -162,10 +165,10 @@ export function convertImages( srcDir, distDir = '', compressionOptions = {} ) {
 					return image.toFile( distFileName );
 				}
 			} else {
-				// copy the file to the destination directory
-				// Read the contents of the source file
+				// Copy the file to the destination directory
 				const distFileName = path.join( distDir, file );
 
+				// Read the contents of the file
 				const fileContent = fs.readFileSync( filePath );
 
 				console.log(

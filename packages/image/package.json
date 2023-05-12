@@ -28,16 +28,16 @@
 		"clean": "rimraf ./{build,temp}",
 		"clean:all": "pnpm clean && pnpm clean:tsc",
 		"clean:tsc": "rimraf ./lib",
-		"image": "node ./bin.js"
+		"image": "node ./build/image.js"
 	},
 	"files": [
 		"bin.js",
 		"build"
 	],
+	"type": "module",
 	"source": "./src/index.ts",
 	"exports": "./build/index.js",
 	"bin": "./build/index.js",
-	"type": "module",
 	"publishConfig": {
 		"access": "public"
 	},

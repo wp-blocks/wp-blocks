@@ -144,17 +144,21 @@ const promptsToAsk = ( format: InputFormats ): PromptObject[] => [
  */
 export async function getImageCompressionOptions(
 	imageFormats: InputFormats[]
-): Promise< CompressionOptions[] > {
-	const options = {};
+): Promise< { [ key in InputFormats ]: CompressionOptions } > {
+	const options = {} as { [ key in InputFormats ]: CompressionOptions };
 
 	for ( const format of imageFormats ) {
 		console.log( '=='.concat( format, '==' ) );
-		let response = {};
+		let response: CompressionOptions;
 
 		if ( format === '.svg' ) {
-			response = await prompts( promptsToAskforSVGs );
+			response = ( await prompts(
+				promptsToAskforSVGs
+			) ) as CompressionOptions;
 		} else {
-			response = await prompts( promptsToAsk( format ) );
+			response = ( await prompts(
+				promptsToAsk( format )
+			) ) as CompressionOptions;
 		}
 
 		if ( response.compress === 'no' ) {

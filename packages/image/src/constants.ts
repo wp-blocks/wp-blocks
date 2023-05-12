@@ -1,3 +1,5 @@
+import { Choice } from 'prompts';
+
 export const compressors = [ 'avif', 'webp', 'mozjpeg', 'jpg', 'png' ] as const;
 
 export type Compressor = typeof compressors[ number ];
@@ -11,9 +13,11 @@ export const inputFormats = [
 	'.tiff',
 	'.gif',
 	'.svg',
-];
+] as const;
 
-export const svgOptions = [
+export type InputFormats = typeof inputFormats[ number ];
+
+export const svgOptions: Choice[] = [
 	{ title: 'CleanupAttrs', value: 'cleanupAttrs' },
 	{ title: 'RemoveDoctype', value: 'removeDoctype' },
 	{ title: 'RemoveXMLProcInst', value: 'removeXMLProcInst' },
