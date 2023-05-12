@@ -90,6 +90,12 @@ module.exports = {
 				'@typescript-eslint/no-unsafe-argument': 'off',
 			},
 		},
+		{
+			files: [ 'packages/image/**/*' ],
+			rules: {
+				'no-console': 'off',
+			},
+		},
 	],
 	settings: {
 		'import/parsers': {

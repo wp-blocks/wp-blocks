@@ -1,6 +1,6 @@
 {
 	"name": "@wp-blocks/image",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"description": "A cli that compress images",
 	"license": "GPL-2.0-or-later",
 	"contributors": [
@@ -36,9 +36,7 @@
 		"build"
 	],
 	"source": "./src/index.ts",
-	"module": "./build/index.js",
 	"exports": "./build/index.js",
-	"types": "./build/index.d.ts",
 	"bin": "bin.js",
 	"type": "module",
 	"publishConfig": {

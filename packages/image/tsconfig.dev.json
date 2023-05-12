@@ -1,11 +1,7 @@
 {
 	"extends": "./tsconfig",
 	"compilerOptions": {
-		"sourceMap": true,
-		"declarationMap": true,
-		"emitDeclarationOnly": false
+		"sourceMap": true
 	},
-	"include": [
-		"./src/**/*"
-	]
+	"include": ["./src/**/*"]
 }
