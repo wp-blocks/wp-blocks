@@ -1,4 +1,4 @@
-/* eslint-disable no-console */
+#!/usr/bin/env node
 import prompts from 'prompts';
 
 import { convertImages } from './compression.js';
@@ -13,7 +13,7 @@ import { getImageFormatsInFolder } from './utils.js';
  * Prompts the user for the source and destination directories
  * then runs a function that converts the images.
  *
- * @returns {Promise<void>} Promise that resolves when the image conversion is complete
+ * @returns Promise that resolves when the image conversion is complete
  */
 export default async function main() {
 	const { srcDir, distDir } = await prompts( [
@@ -40,3 +40,11 @@ export default async function main() {
 		'seconds'
 	);
 }
+
+await main()
+	.then( () => {
+		console.log( 'The end 🎉' );
+	} )
+	.catch( ( err ) => {
+		console.error( err );
+	} );

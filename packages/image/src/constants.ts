@@ -1,6 +1,8 @@
-export const compressors = [ 'avif', 'webp', 'mozjpeg', 'jpg', 'png' ];
+export const compressors = [ 'avif', 'webp', 'mozjpeg', 'jpg', 'png' ] as const;
 
-export const InputFormats = [
+export type Compressor = typeof compressors[ number ];
+
+export const inputFormats = [
 	'.jpg',
 	'.jpeg',
 	'.png',

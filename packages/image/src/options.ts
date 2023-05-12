@@ -1,16 +1,15 @@
 /* eslint-disable no-console */
 import fs from 'fs';
 
-import prompts from 'prompts';
+import prompts, { PromptObject } from 'prompts';
 
-import { compressors, svgOptions } from './constants.js';
+import { compressors, svgOptions, InputFormats } from './constants.js';
+import { CompressionOptions } from './types.js';
 
 /**
  * Prompts the user for the source directory
- *
- * @type prompts.PromptObject<string>
  */
-export const srcDirQuestion = {
+export const srcDirQuestion: PromptObject = {
 	type: 'text',
 	name: 'srcDir',
 	message: 'Enter the source directory:',
@@ -31,10 +30,8 @@ export const srcDirQuestion = {
 
 /**
  * Prompts the user for the source and destination directories
- *
- * @type prompts.PromptObject<string>
  */
-export const distDirQuestion = {
+export const distDirQuestion: PromptObject = {
 	type: 'text',
 	name: 'distDir',
 	message:
@@ -44,10 +41,8 @@ export const distDirQuestion = {
 
 /**
  * The function prompts the user for the source and destination directories
- *
- * @type prompts.PromptObject<string>[]
  */
-const promptsToAskforSVGs = [
+const promptsToAskforSVGs: PromptObject[] = [
 	{
 		type: 'select',
 		name: 'compress',
@@ -78,10 +73,10 @@ const promptsToAskforSVGs = [
 /**
  * The function prompts the user for the image compression options for different image formats
  *
- * @param {any} format The image format
- * @returns {prompts.PromptObject<string>[]} An array of prompts
+ * @param format The image format
+ * @returns An array of prompts
  */
-const promptsToAsk = ( format ) => [
+const promptsToAsk = ( format: InputFormats ): PromptObject[] => [
 	{
 		type: 'select',
 		name: 'compress',
@@ -139,15 +134,17 @@ const promptsToAsk = ( format ) => [
  * This function prompts the user for options to compress different image formats,
  * including SVG files with custom SVGO plugins.
  *
- * @param {Object} imageFormats - An array of image file formats (e.g. ['.jpg', '.png', '.svg'])
- *                              that the function will prompt the user about compressing.
- * @returns {Promise} an object containing compression options for different image formats. The
+ * @param imageFormats - An array of image file formats (e.g. ['.jpg', '.png', '.svg'])
+ *                     that the function will prompt the user about compressing.
+ * @returns an object containing compression options for different image formats. The
  * options are obtained through a series of prompts that ask the user whether they want
  * to compress each format, which compressor to use (if applicable), and the quality
  * level (if applicable). For SVG files, the user can also choose which SVGO plugins to
  * use for compression.
  */
-export async function getImageCompressionOptions( imageFormats ) {
+export async function getImageCompressionOptions(
+	imageFormats: InputFormats[]
+): Promise< CompressionOptions[] > {
 	const options = {};
 
 	for ( const format of imageFormats ) {
