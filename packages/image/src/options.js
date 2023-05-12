@@ -153,7 +153,6 @@ export async function getImageCompressionOptions( imageFormats ) {
 	for ( const format of imageFormats ) {
 		console.log( '=='.concat( format, '==' ) );
 		let response = {};
-		// If the format is SVG
 
 		if ( format === '.svg' ) {
 			response = await prompts( promptsToAskforSVGs );
