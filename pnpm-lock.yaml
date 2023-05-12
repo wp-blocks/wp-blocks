@@ -144,9 +144,6 @@ importers:
 
   packages/image:
     dependencies:
-      '@types/prompts':
-        specifier: ^2.4.4
-        version: 2.4.4
       '@wp-blocks/utils':
         specifier: workspace:*
         version: link:../utils
@@ -160,9 +157,9 @@ importers:
         specifier: ^3.0.2
         version: 3.0.2
     devDependencies:
-      prettier:
-        specifier: ^2.8.2
-        version: 2.8.4
+      '@types/prompts':
+        specifier: ^2.4.4
+        version: 2.4.4
 
   packages/scripts:
     dependencies:
@@ -3081,7 +3078,7 @@ packages:
     dependencies:
       '@types/node': 18.14.1
       kleur: 3.0.3
-    dev: false
+    dev: true
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
@@ -9752,7 +9749,6 @@ packages:
   /kleur@3.0.3:
     resolution: {integrity: sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==}
     engines: {node: '>=6'}
-    dev: false
 
   /klona@2.0.6:
     resolution: {integrity: sha512-dhG34DXATL5hSxJbIexCft8FChFXtmskoZYnoPWjXQuebWYCNkVeV3KkGegCK9CP1oswI/vQibS2GY7Em/sJJA==}
@@ -11340,6 +11336,7 @@ packages:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    dev: false
 
   /pretty-format@26.6.2:
     resolution: {integrity: sha512-7AeGuCYNGmycyQbCqd/3PWH4eOoX/OiCa0uphp57NVTeAGdJGaAliecxwBDHYQCIvrW7aDBZCYeNTP/WX69mkg==}
