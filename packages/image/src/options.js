@@ -42,6 +42,11 @@ export const distDirQuestion = {
 	initial: './images',
 };
 
+/**
+ * The function prompts the user for the source and destination directories
+ *
+ * @type prompts.PromptObject<string>[]
+ */
 const promptsToAskforSVGs = [
 	{
 		type: 'select',
@@ -70,6 +75,12 @@ const promptsToAskforSVGs = [
 	},
 ];
 
+/**
+ * The function prompts the user for the image compression options for different image formats
+ *
+ * @param {any} format The image format
+ * @returns {prompts.PromptObject<string>[]} An array of prompts
+ */
 const promptsToAsk = ( format ) => [
 	{
 		type: 'select',
