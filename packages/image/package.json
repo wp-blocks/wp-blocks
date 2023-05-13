@@ -34,10 +34,11 @@
 		"bin.js",
 		"build"
 	],
-	"source": "./src/index.ts",
-	"exports": "./build/index.js",
-	"bin": "bin.js",
 	"type": "module",
+	"source": "./src/index.ts",
+	"module": "./build/index.js",
+	"exports": "./build/index.js",
+	"bin": "./bin.js",
 	"publishConfig": {
 		"access": "public"
 	},

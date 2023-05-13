@@ -1,4 +1,4 @@
-import main from './src/index.js';
+import main from './build/index.js';
 
 await main()
 	.then( () => {

@@ -6,8 +6,8 @@
 		"tsBuildInfoFile": "./build/tsconfig.tsbuildinfo",
 
 		"module": "Node16",
-		"moduleResolution": "Node16"
+		"moduleResolution": "Node16",
+		"emitDeclarationOnly": false
 	},
-	"include": ["./src/**/*"],
-	"references": [{ "path": "../utils" }]
+	"include": ["./src/**/*"]
 }

@@ -58,7 +58,7 @@ const promptsToAskforSVGs: PromptObject[] = [
 	},
 	{
 		type: ( _prev, _values ) => {
-			if ( _values.compress === 'custom' ) {
+			if ( _values.compress !== 'custom' ) {
 				return null; // Skip this question
 			}
 			return 'multiselect';
